@@ -1,0 +1,24 @@
+{
+  "email": "you@example.com",
+  "blurb": "The best way to reach me is email — I usually reply within a day or two.",
+
+  "_accessKeyNote": "Get a free key at https://web3forms.com — enter your email, they send you an access key. Mail submitted below is delivered to the address that key is registered to. Until this is filled in, Send stays disabled.",
+  "accessKey": "",
+
+  "subjectPrefix": "[Portfolio] ",
+  "signature": "Sent from PortfoliOS",
+
+  "links": [
+    {
+      "label": "GitHub",
+      "value": "github.com/you",
+      "url": "https://github.com/you"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/you",
+      "url": "https://linkedin.com/in/you"
+    }
+  ],
+  "resumeUrl": ""
+}

@@ -1,0 +1,95 @@
+/*
+  98.css supplies the .window frame and .title-bar styling; positioning,
+  stacking, and resize affordances are entirely ours.
+*/
+
+.os-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  min-height: 140px;
+  padding: 3px;
+}
+
+.os-window .title-bar {
+  height: var(--titlebar-h);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  /* Stops the browser from panning/zooming instead of moving the window. */
+  touch-action: none;
+}
+
+.os-window .title-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.title-icon {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+.os-window-body {
+  flex: 1 1 auto;
+  margin: 3px 0 0;
+  overflow: auto;
+  background: var(--surface);
+}
+
+/* --- Resize handles -------------------------------------------------- */
+
+.resize-handle {
+  position: absolute;
+  touch-action: none;
+  z-index: 1;
+}
+
+.resize-n,
+.resize-s {
+  left: var(--resize-edge);
+  right: var(--resize-edge);
+  height: var(--resize-edge);
+  cursor: ns-resize;
+}
+.resize-n { top: 0; }
+.resize-s { bottom: 0; }
+
+.resize-e,
+.resize-w {
+  top: var(--resize-edge);
+  bottom: var(--resize-edge);
+  width: var(--resize-edge);
+  cursor: ew-resize;
+}
+.resize-e { right: 0; }
+.resize-w { left: 0; }
+
+/* Corners sit above the edges so the overlap resolves in their favor. */
+.resize-ne,
+.resize-nw,
+.resize-se,
+.resize-sw {
+  width: calc(var(--resize-edge) * 2);
+  height: calc(var(--resize-edge) * 2);
+  z-index: 2;
+}
+
+.resize-nw { top: 0; left: 0; cursor: nwse-resize; }
+.resize-se { bottom: 0; right: 0; cursor: nwse-resize; }
+.resize-ne { top: 0; right: 0; cursor: nesw-resize; }
+.resize-sw { bottom: 0; left: 0; cursor: nesw-resize; }
+
+@media (max-width: 767px) {
+  .os-window {
+    /* Full-bleed on small screens; the frame padding just wastes space. */
+    padding: 2px;
+  }
+}

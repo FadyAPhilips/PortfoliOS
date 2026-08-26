@@ -1,0 +1,10 @@
+{
+  "name": "Your Name",
+  "role": "Software Engineer",
+  "summary": "A few sentences about who you are, what you build, and what you care about. This is the first thing most people will read, so lead with what makes your work distinctive.",
+  "details": [
+    { "label": "Location", "value": "City, Country" },
+    { "label": "Focus", "value": "Full-stack web development" },
+    { "label": "Currently", "value": "Open to opportunities" }
+  ]
+}

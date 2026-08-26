@@ -1,0 +1,16 @@
+{
+  "groups": [
+    {
+      "name": "Languages",
+      "items": ["JavaScript", "TypeScript", "Python", "SQL"]
+    },
+    {
+      "name": "Frameworks & Libraries",
+      "items": ["React", "Node.js", "Express", "Vite"]
+    },
+    {
+      "name": "Tools & Platforms",
+      "items": ["Git", "Docker", "AWS", "Figma"]
+    }
+  ]
+}

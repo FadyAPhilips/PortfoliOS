@@ -1,0 +1,129 @@
+/* Shared layout helpers for program windows. */
+
+.app-pad {
+  padding: 8px;
+}
+
+/* Full-height column for apps with a status bar pinned to the bottom. */
+.app-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 3px;
+}
+
+.app-grow {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 13px;
+}
+
+.app-sub {
+  margin: 2px 0 0;
+  color: var(--button-shadow);
+}
+
+.about-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.app-icon-lg {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+}
+
+.spec-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spec-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+}
+
+.spec-list li + li {
+  border-top: 1px solid var(--button-face);
+}
+
+.spec-list span:first-child {
+  color: var(--button-shadow);
+}
+
+.bullets {
+  margin: 6px 0 0;
+  padding-left: 16px;
+}
+
+.bullets li {
+  margin-bottom: 2px;
+}
+
+.button-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.app-blurb {
+  margin-bottom: 10px;
+}
+
+/* Explorer-style detail strip under the Projects list. */
+.detail-panel {
+  flex: 0 0 auto;
+  margin: 3px 0;
+  padding: 6px 8px;
+  min-height: 54px;
+  background: var(--surface);
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--button-shadow);
+}
+
+.detail-panel p {
+  margin: 0 0 4px;
+}
+
+.detail-panel p:last-child {
+  margin-bottom: 0;
+}
+
+fieldset {
+  margin-bottom: 10px;
+}
+
+/* Solitaire's felt table. */
+.felt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #008000;
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--button-shadow);
+}
+
+.felt-note {
+  text-align: center;
+  color: #fff;
+}
+
+.felt-note p:first-child {
+  font-size: 18px;
+  margin: 0;
+}
+
+.felt-note .app-sub {
+  color: #bfe0bf;
+}

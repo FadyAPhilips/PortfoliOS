@@ -1,0 +1,31 @@
+{
+  "positions": [
+    {
+      "role": "Senior Software Engineer",
+      "org": "Company A",
+      "period": "2024 — Present",
+      "location": "City, Country",
+      "highlights": [
+        "An accomplishment with a concrete outcome or number.",
+        "Another accomplishment showing scope or ownership."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "org": "Company B",
+      "period": "2022 — 2024",
+      "location": "City, Country",
+      "highlights": [
+        "An accomplishment with a concrete outcome or number.",
+        "Another accomplishment showing scope or ownership."
+      ]
+    },
+    {
+      "role": "Junior Software Engineer",
+      "org": "Company C",
+      "period": "2021 — 2022",
+      "location": "City, Country",
+      "highlights": ["An accomplishment with a concrete outcome or number."]
+    }
+  ]
+}

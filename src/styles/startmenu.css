@@ -1,0 +1,92 @@
+.start-menu {
+  position: fixed;
+  left: 2px;
+  bottom: var(--taskbar-h);
+  z-index: 1001;
+
+  display: flex;
+  min-width: 200px;
+  padding: 3px;
+
+  background: var(--surface);
+  /* Same raised frame 98.css gives .window. */
+  box-shadow: inset -1px -1px var(--window-frame),
+    inset 1px 1px var(--button-face),
+    inset -2px -2px var(--button-shadow),
+    inset 2px 2px var(--button-highlight);
+}
+
+/* The vertical gradient spine with sideways branding. */
+.start-banner {
+  flex: 0 0 22px;
+  background: linear-gradient(
+    to bottom,
+    var(--dialog-blue-light),
+    var(--dialog-blue) 55%,
+    #000040
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+}
+
+.start-banner span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.start-items {
+  flex: 1 1 auto;
+  list-style: none;
+  margin: 0;
+  padding: 2px 0;
+}
+
+/*
+  Menu items are flat, not beveled, so 98.css's button styling is unwound
+  here too — including its `color: transparent` + `text-shadow` text trick,
+  which would otherwise keep painting dark text over the navy highlight.
+*/
+.start-items button,
+.start-items button:active {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 5px 18px 5px 6px;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-color);
+  text-shadow: none;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.start-items button:hover,
+.start-items button:focus-visible {
+  background: var(--selection-blue);
+  color: #fff;
+  outline: none;
+}
+
+.start-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.start-separator {
+  height: 0;
+  margin: 4px 3px;
+  border-top: 1px solid var(--button-shadow);
+  border-bottom: 1px solid var(--button-highlight);
+}

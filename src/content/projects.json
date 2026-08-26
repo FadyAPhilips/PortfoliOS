@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "name": "Project One",
+      "type": "Web App",
+      "year": "2025",
+      "description": "One or two sentences on what it does and why you built it.",
+      "tech": ["React", "Node.js", "PostgreSQL"],
+      "url": "https://example.com"
+    },
+    {
+      "name": "Project Two",
+      "type": "CLI Tool",
+      "year": "2024",
+      "description": "One or two sentences on what it does and why you built it.",
+      "tech": ["TypeScript", "Rust"],
+      "url": ""
+    },
+    {
+      "name": "Project Three",
+      "type": "Library",
+      "year": "2024",
+      "description": "One or two sentences on what it does and why you built it.",
+      "tech": ["Python"],
+      "url": ""
+    }
+  ]
+}

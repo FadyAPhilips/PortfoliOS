@@ -1,0 +1,70 @@
+@import './desktop.css';
+@import './window.css';
+@import './taskbar.css';
+@import './startmenu.css';
+@import './apps.css';
+@import './mail.css';
+
+/*
+  Win98 palette.
+
+  IMPORTANT: 98.css's *source* defines these as :root custom properties, but
+  the published dist/98.css inlines every one of them into literals (silver,
+  grey, navy, #dfdfdf...) and ships no :root block at all. So we declare them
+  here ourselves, with values matching what 98.css actually renders. Our
+  hand-rolled chrome references these instead of hardcoding hex, which is
+  what keeps it in step with the library's own widgets.
+*/
+
+:root {
+  --surface: #c0c0c0; /* silver */
+  --button-face: #dfdfdf;
+  --button-highlight: #fff;
+  --button-shadow: #808080; /* grey */
+  --window-frame: #0a0a0a;
+  --dialog-blue: #000080; /* navy */
+  --dialog-blue-light: #1084d0;
+  --dialog-gray: #808080;
+  --dialog-gray-light: #b5b5b5;
+  --text-color: #222;
+
+  --desktop-teal: #008080;
+  --taskbar-h: 28px;
+  --titlebar-h: 22px;
+  --resize-edge: 5px;
+  --selection-blue: #000080;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  background: var(--desktop-teal);
+  /* The desktop metaphor breaks if the page itself can be text-selected
+     while dragging windows around. */
+  user-select: none;
+  cursor: default;
+}
+
+/* Content inside program windows should still be selectable. */
+.os-window-body {
+  user-select: text;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
