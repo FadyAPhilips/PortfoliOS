@@ -1,9 +1,9 @@
 {
-  "email": "you@example.com",
+  "email": "fadyaphilips97@gmail.com",
   "blurb": "The best way to reach me is email — I usually reply within a day or two.",
 
   "_accessKeyNote": "Get a free key at https://web3forms.com — enter your email, they send you an access key. Mail submitted below is delivered to the address that key is registered to. Until this is filled in, Send stays disabled.",
-  "accessKey": "",
+  "accessKey": "10352d95-07cd-4292-b5b8-d9ffb5b02c0d",
 
   "subjectPrefix": "[Portfolio] ",
   "signature": "Sent from PortfoliOS",
@@ -11,13 +11,13 @@
   "links": [
     {
       "label": "GitHub",
-      "value": "github.com/you",
-      "url": "https://github.com/you"
+      "value": "github.com/FadyAPhilips",
+      "url": "https://github.com/FadyAPhilips"
     },
     {
       "label": "LinkedIn",
-      "value": "linkedin.com/in/you",
-      "url": "https://linkedin.com/in/you"
+      "value": "linkedin.com/in/fady-philips-a48b4319b/",
+      "url": "https://linkedin.com/in/fady-philips-a48b4319b/"
     }
   ],
   "resumeUrl": ""
