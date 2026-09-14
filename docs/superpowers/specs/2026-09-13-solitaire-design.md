@@ -10,8 +10,10 @@ bouncing-cards cascade across the whole desktop on a win. Plus one thing
 sol.exe never had: a **Solve** button, so a visitor can see the cascade
 without playing a full game.
 
-Card faces and backs are original drawings in the Win98 spirit. The
-Microsoft bitmaps are not reproduced.
+**Amended 2026-09-14:** card faces and backs were originally drawn as SVG in
+the Win98 spirit. They now come from a supplied sprite sheet
+(`src/assets/solitaire/cards.png`) — the Windows Solitaire deck itself. See
+the Table section below.
 
 ## Approach
 
@@ -77,10 +79,15 @@ A `ResizeObserver` on the felt applies a single `transform: scale()` so the
 table shrinks to fit narrow or compact windows; the maths never changes.
 Default window 616×520 fits the table at 1:1.
 
-`CardFace`: correct pip layouts for A–10; K/Q/J as stylized figures
-(crown / tiara / cap over a face block, mirrored top and bottom); rank and
-suit indices in both corners. Six original back patterns keyed by index.
-Stable key `suit * 13 + rank` so React moves nodes rather than remounting.
+**Amended 2026-09-14 — sprite sheet.** `src/assets/solitaire/cards.png` is
+13 columns x 6 rows of 71x96 cells, exactly `CARD_W`/`CARD_H`. Rows 0-3 are
+the suits in the engine's order, ace to king, so a face is
+`(col = rank - 1, row = suit)`. Row 4-5 hold twelve backs (four animated,
+first frames only), a green O marker for an empty stock, a red X (unused —
+recycles are unlimited here) and blank cells. Cards are divs offset by
+`background-position`, with `--cards-sheet` set once on `.sol`. Stable key
+`suit * 13 + rank` so React moves nodes rather than remounting. The SVG
+`CardDefs` and the `rasterize.js` helper this replaced are deleted.
 
 ## Interaction
 

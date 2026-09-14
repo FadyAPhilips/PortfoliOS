@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { Z } from '../../os/constants'
+import { CARD_H, CARD_W } from './layout'
 
 /**
  * The sol.exe win cascade. On a real Win98 desktop the game painted straight
@@ -10,11 +11,12 @@ import { Z } from '../../os/constants'
  * so the trails come for free.
  *
  * Props:
- *   launches — [{ img, x, y, w, h }] in screen pixels, in launch order.
+ *   sheet — the decoded card sheet; every card is one blit out of it.
+ *   launches — [{ sx, sy, x, y, w, h }] in screen pixels, in launch order.
  *   onDone(reason) — 'finished' when the last card leaves, 'interrupted' on
  *   any click or key, exactly as the original stopped.
  */
-export default function WinAnimation({ launches, onDone }) {
+export default function WinAnimation({ sheet, launches, onDone }) {
   const canvasRef = useRef(null)
   const done = useRef(onDone)
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function WinAnimation({ launches, onDone }) {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || !launches.length) return
+    if (!canvas || !sheet || !launches.length) return
     const W = window.innerWidth
     const H = window.innerHeight
     const dpr = window.devicePixelRatio || 1
@@ -82,7 +84,11 @@ export default function WinAnimation({ launches, onDone }) {
           c.y = H - c.h
           c.vy = -c.vy * BOUNCE
         }
-        ctx.drawImage(c.img, Math.round(c.x), Math.round(c.y), c.w, c.h)
+        ctx.drawImage(
+          sheet,
+          c.sx, c.sy, CARD_W, CARD_H,
+          Math.round(c.x), Math.round(c.y), c.w, c.h,
+        )
         if (c.x + c.w < 0 || c.x > W) flying.splice(i, 1)
       }
       if (next >= launches.length && flying.length === 0) {
@@ -104,7 +110,7 @@ export default function WinAnimation({ launches, onDone }) {
       window.removeEventListener('pointerdown', stop, true)
       window.removeEventListener('keydown', stop, true)
     }
-  }, [launches])
+  }, [sheet, launches])
 
   return createPortal(
     <canvas

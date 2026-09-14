@@ -11,7 +11,8 @@ export default function DeckDialog({ design, onOk, onCancel }) {
     <Dialog
       title="Select Card Back"
       onClose={onCancel}
-      width={300}
+      // Six 71px backs plus gaps, so the grid sits at natural size.
+      width={480}
       actions={
         <>
           <button type="button" onClick={() => onOk(pick)}>

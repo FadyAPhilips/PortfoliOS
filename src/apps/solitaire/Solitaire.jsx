@@ -4,13 +4,13 @@ import MenuBar from '../MenuBar'
 import Dialog from '../Dialog'
 import { autoMove, drawFromStock, moveCards, newGame, solve, tick, undo } from './engine'
 import { CARD_H, CARD_W, TABLE_H, TABLE_W, cardRect, slotRect } from './layout'
-import { CardBack, CardDefs, CardFace } from './Cards'
+import { CardBack, CardFace, SheetCell } from './Cards'
+import { MARKER_RECYCLE, SHEET_URL, loadSheet } from './cardArt'
 import { cardKey, useCardDrag } from './useCardDrag'
 import OptionsDialog from './OptionsDialog'
 import DeckDialog from './DeckDialog'
 import AboutDialog from './AboutDialog'
 import WinAnimation from './WinAnimation'
-import { rasterizeCards } from './rasterize'
 
 const SLOTS = [
   { pile: 'stock' },
@@ -85,34 +85,40 @@ export default function Solitaire({ windowId }) {
   }, [focusedId, windowId, deal])
 
   // Winning — by play or by Solve — starts the cascade once the winning
-  // table has rendered, so the foundation cards can be rasterized and
-  // launched from where they really are on screen.
+  // table has rendered, so the cards launch from where they really are on
+  // screen. Every card is one blit out of the sheet, so all this needs is
+  // the sheet decoded and each card's cell.
   useEffect(() => {
     if (!game.won || !tableRef.current) return
     let cancelled = false
-    const table = tableRef.current
-    const origin = table.getBoundingClientRect()
-    rasterizeCards(table, document.getElementById('sol-defs')).then((images) => {
-      if (cancelled) return
-      const launches = []
-      // Top card of each foundation in turn: the kings, then the queens…
-      for (let rank = 13; rank >= 1; rank--) {
-        game.foundations.forEach((pile, index) => {
-          const k = pile[rank - 1]
-          const img = k && images.get(String(cardKey(k)))
-          if (!img) return
-          const slot = slotRect({ pile: 'foundation', index })
-          launches.push({
-            img,
-            x: origin.left + slot.x * scale,
-            y: origin.top + slot.y * scale,
-            w: CARD_W * scale,
-            h: CARD_H * scale,
+    const origin = tableRef.current.getBoundingClientRect()
+    loadSheet()
+      .then((sheet) => {
+        if (cancelled) return
+        const launches = []
+        // Top card of each foundation in turn: the kings, then the queens…
+        for (let rank = 13; rank >= 1; rank--) {
+          game.foundations.forEach((pile, index) => {
+            const k = pile[rank - 1]
+            if (!k) return
+            const slot = slotRect({ pile: 'foundation', index })
+            launches.push({
+              sx: (k.rank - 1) * CARD_W,
+              sy: k.suit * CARD_H,
+              x: origin.left + slot.x * scale,
+              y: origin.top + slot.y * scale,
+              w: CARD_W * scale,
+              h: CARD_H * scale,
+            })
           })
-        })
-      }
-      setCascade(launches)
-    })
+        }
+        setCascade({ sheet, launches })
+      })
+      .catch(() => {
+        // No sheet, no cascade — but the game still has to reach its
+        // "Deal again?" prompt rather than sitting on a finished table.
+        if (!cancelled) setDialog('dealAgain')
+      })
     return () => {
       cancelled = true
     }
@@ -159,11 +165,12 @@ export default function Solitaire({ windowId }) {
   ]
 
   return (
-    <div className="sol">
+    // The sheet URL is set once here and every card reads it through the
+    // custom property, so the hashed asset path lives in one place.
+    <div className="sol" style={{ '--cards-sheet': `url(${SHEET_URL})` }}>
       <MenuBar items={menus} />
 
       <div className="sol-felt" ref={feltRef}>
-        <CardDefs />
         <div
           className="sol-table"
           ref={tableRef}
@@ -172,13 +179,18 @@ export default function Solitaire({ windowId }) {
           {SLOTS.map((loc) => {
             const r = slotRect(loc)
             const isStock = loc.pile === 'stock'
+            const recycle = isStock && game.stock.length === 0
             return (
               <div
                 key={`${loc.pile}${loc.index ?? ''}`}
-                className={`sol-slot${isStock && game.stock.length === 0 ? ' sol-slot-stock' : ''}`}
+                className="sol-slot"
                 style={{ left: r.x, top: r.y, width: r.w, height: r.h }}
                 onClick={isStock ? onStock : undefined}
-              />
+              >
+                {/* The sheet's own marker for a stock you can click to
+                    recycle, where the original showed it. */}
+                {recycle && <SheetCell {...MARKER_RECYCLE} />}
+              </div>
             )
           })}
 
@@ -189,7 +201,10 @@ export default function Solitaire({ windowId }) {
                 key={cardKey(k)}
                 className="sol-card"
                 data-key={cardKey(k)}
-                style={{ left: rect.x, top: rect.y, zIndex: z }}
+                // Position in the pile goes through a custom property, not
+                // an inline z-index — an inline value would outrank the
+                // .is-dragging rule that lifts a dragged run above the table.
+                style={{ left: rect.x, top: rect.y, '--z': z }}
                 onClick={stock ? onStock : undefined}
                 onPointerDown={stock ? undefined : (e) => drag.begin(e, loc)}
                 onPointerMove={stock ? undefined : drag.move}
@@ -266,7 +281,8 @@ export default function Solitaire({ windowId }) {
 
       {cascade && (
         <WinAnimation
-          launches={cascade}
+          sheet={cascade.sheet}
+          launches={cascade.launches}
           onDone={() => {
             setCascade(null)
             setDialog('dealAgain')
