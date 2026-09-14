@@ -1,27 +1,47 @@
 {
   "projects": [
     {
+      "slug": "project-one",
       "name": "Project One",
-      "type": "Web App",
-      "year": "2025",
-      "description": "One or two sentences on what it does and why you built it.",
-      "tech": ["React", "Node.js", "PostgreSQL"],
+      "description": [
+        "Project One",
+        "===========",
+        "",
+        "One or two sentences on what it does and why you built it.",
+        "",
+        "Built with: React, Node.js, PostgreSQL"
+      ],
+      "screenshots": [
+        "/assets/projects/project-one/screenshot-1.jpg",
+        "/assets/projects/project-one/screenshot-2.jpg"
+      ],
+      "video": "",
       "url": "https://example.com"
     },
     {
+      "slug": "project-two",
       "name": "Project Two",
-      "type": "CLI Tool",
-      "year": "2024",
-      "description": "One or two sentences on what it does and why you built it.",
-      "tech": ["TypeScript", "Rust"],
+      "description": [
+        "Project Two",
+        "===========",
+        "",
+        "One or two sentences on what it does and why you built it."
+      ],
+      "screenshots": ["/assets/projects/project-two/screenshot-1.jpg"],
+      "video": "",
       "url": ""
     },
     {
+      "slug": "project-three",
       "name": "Project Three",
-      "type": "Library",
-      "year": "2024",
-      "description": "One or two sentences on what it does and why you built it.",
-      "tech": ["Python"],
+      "description": [
+        "Project Three",
+        "=============",
+        "",
+        "One or two sentences on what it does and why you built it."
+      ],
+      "screenshots": [],
+      "video": "",
       "url": ""
     }
   ]

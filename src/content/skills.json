@@ -2,15 +2,92 @@
   "groups": [
     {
       "name": "Languages",
-      "items": ["JavaScript", "TypeScript", "Python", "SQL"]
+      "items": [
+        { "name": "JavaScript", "description": "" },
+        { "name": "TypeScript", "description": "" },
+        { "name": "Python", "description": "" },
+        { "name": "C/C++", "description": "" },
+        { "name": "Java", "description": "" },
+        { "name": "Bash", "description": "" },
+        { "name": "HTML5", "description": "" },
+        { "name": "CSS3", "description": "" }
+      ]
     },
     {
-      "name": "Frameworks & Libraries",
-      "items": ["React", "Node.js", "Express", "Vite"]
+      "name": "Frontend & Mobile",
+      "items": [
+        { "name": "React.js", "description": "" },
+        { "name": "React Native", "description": "" },
+        { "name": "Redux", "description": "" },
+        { "name": "Redux Toolkit", "description": "" },
+        { "name": "SwiftUI", "description": "" },
+        { "name": "Expo", "description": "" },
+        { "name": "Storybook", "description": "" },
+        { "name": "pygame", "description": "" }
+      ]
     },
     {
-      "name": "Tools & Platforms",
-      "items": ["Git", "Docker", "AWS", "Figma"]
+      "name": "Backend & Cloud",
+      "items": [
+        { "name": "Node.js", "description": "" },
+        { "name": "AWS (Lambda, DynamoDB, API Gateway, Amplify)", "description": "" },
+        { "name": "Django", "description": "" },
+        { "name": "Firebase", "description": "" },
+        { "name": "MySQL", "description": "" },
+        { "name": "MongoDB", "description": "" },
+        { "name": "PostgreSQL", "description": "" },
+        { "name": "MS SQL Server", "description": "" }
+      ]
+    },
+    {
+      "name": "DevOps & Tooling",
+      "items": [
+        { "name": "Docker", "description": "" },
+        { "name": "Git", "description": "" },
+        { "name": "GitHub Actions", "description": "" },
+        { "name": "CI/CD", "description": "" },
+        { "name": "Jira", "description": "" },
+        { "name": "Linux", "description": "" },
+        { "name": "Unix", "description": "" },
+        { "name": "Network Security", "description": "" },
+        { "name": "Selenium", "description": "" }
+      ]
+    },
+    {
+      "name": "Systems & Embedded",
+      "items": [
+        { "name": "Raspberry Pi", "description": "" },
+        { "name": "MQTT", "description": "" },
+        { "name": "OpenCV", "description": "" },
+        { "name": "Computer Vision", "description": "" },
+        { "name": "Autonomous Navigation", "description": "" }
+      ]
+    },
+    {
+      "name": "Design & Architecture",
+      "items": [
+        { "name": "OOP", "description": "" },
+        { "name": "ECS", "description": "" },
+        { "name": "MVC", "description": "" },
+        { "name": "Microservices", "description": "" },
+        { "name": "REST API", "description": "" },
+        { "name": "Agile", "description": "" },
+        { "name": "SCRUM", "description": "" },
+        { "name": "Figma", "description": "" },
+        { "name": "UI/UX Design", "description": "" }
+      ]
+    },
+    {
+      "name": "AI & LLM Tools",
+      "items": [
+        { "name": "Claude Code", "description": "" },
+        { "name": "OpenAI API", "description": "" },
+        { "name": "ChatGPT", "description": "" },
+        { "name": "Prompt Engineering", "description": "" },
+        { "name": "RAG", "description": "" },
+        { "name": "AI Agents", "description": "" },
+        { "name": "MCP", "description": "" }
+      ]
     }
   ]
 }

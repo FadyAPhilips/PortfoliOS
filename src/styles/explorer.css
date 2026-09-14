@@ -1,0 +1,215 @@
+/* Projects — a Win98 folder window — plus the menu strip it shares with the
+   viewers that open from it. */
+
+/* --- Menu strip ----------------------------------------------------- */
+
+.menubar {
+  display: flex;
+  flex: 0 0 auto;
+  padding: 1px 0;
+}
+
+.menubar-item {
+  /* inline-block so ::first-letter applies; it doesn't on plain inlines. */
+  display: inline-block;
+  padding: 2px 6px;
+}
+
+/* The mnemonic underline: File, Edit, View, Help. */
+.menubar-item::first-letter {
+  text-decoration: underline;
+}
+
+/* --- Real menus (Solitaire's Game / Help) ---------------------------- */
+
+.menubar-menu {
+  position: relative;
+}
+
+/* A trigger is a <button>, so 98.css's button chrome has to come off. */
+.menubar-trigger,
+.menubar-trigger:active {
+  min-width: 0;
+  min-height: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-color);
+  text-shadow: none;
+  cursor: default;
+}
+
+.menubar-trigger:focus-visible {
+  outline: 1px dotted var(--text-color);
+  outline-offset: -1px;
+}
+
+.menubar-trigger.is-open {
+  background: var(--dialog-blue);
+  color: var(--button-highlight);
+}
+
+/* Raised panel, like every Win98 drop-down. */
+.menu-panel {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 200;
+  min-width: 150px;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  background: var(--surface);
+  box-shadow: inset -1px -1px var(--window-frame), inset 1px 1px var(--button-highlight),
+    inset -2px -2px var(--button-shadow), inset 2px 2px var(--button-face);
+}
+
+.menu-entry,
+.menu-entry:active {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 3px 18px 3px 20px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-color);
+  text-shadow: none;
+  text-align: left;
+  cursor: default;
+}
+
+.menu-entry:hover:not(:disabled),
+.menu-entry:focus-visible {
+  outline: none;
+  background: var(--dialog-blue);
+  color: var(--button-highlight);
+}
+
+.menu-entry:disabled {
+  color: var(--button-shadow);
+  text-shadow: 1px 1px 0 var(--button-highlight);
+}
+
+.menu-separator {
+  height: 0;
+  margin: 3px 1px;
+  border-top: 1px solid var(--button-shadow);
+  border-bottom: 1px solid var(--button-highlight);
+}
+
+/* --- Toolbar and address bar --------------------------------------- */
+
+.explorer-toolbar {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  padding: 3px 2px;
+  border-top: 1px solid var(--button-highlight);
+  border-bottom: 1px solid var(--button-shadow);
+}
+
+.explorer-toolbar button {
+  min-width: 0;
+  min-height: 21px;
+  padding: 0 8px;
+}
+
+.explorer-address {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 2px;
+}
+
+/* Same sunken field bevel 98.css gives text inputs, in our tokens. */
+.explorer-address-field {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2px 4px;
+  background: var(--button-highlight);
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
+    inset 2px 2px var(--window-frame);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Icon grid ------------------------------------------------------- */
+
+.explorer-body {
+  margin-bottom: 3px;
+}
+
+/* Folder windows flow left-to-right in rows — unlike the desktop, which
+   fills columns first. */
+.explorer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 2px;
+  padding: 6px;
+}
+
+/*
+  Same 98.css button unwind as .desktop-icon (see desktop.css for why every
+  line is needed), but black on white with a navy selection.
+*/
+.file-icon,
+.file-icon:active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  width: 75px;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px 2px;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-color);
+  text-shadow: none;
+
+  text-align: center;
+  cursor: default;
+}
+
+.file-icon:focus,
+.file-icon:focus-visible {
+  outline: none;
+}
+
+.file-icon-img {
+  width: 32px;
+  height: 32px;
+}
+
+.file-icon.is-selected .file-icon-img {
+  opacity: 0.7;
+}
+
+.file-icon-label {
+  padding: 1px 3px;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.file-icon.is-selected .file-icon-label {
+  background: var(--selection-blue);
+  color: var(--button-highlight);
+  outline: 1px dotted var(--button-highlight);
+  outline-offset: -1px;
+}
+
+.file-icon:focus-visible .file-icon-label {
+  outline: 1px dotted var(--text-color);
+  outline-offset: -1px;
+}

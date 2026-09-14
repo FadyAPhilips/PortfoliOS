@@ -1,0 +1,145 @@
+/* Solitaire. The table is laid out in fixed Win98 card units (see
+   solitaire/layout.js) and scaled as a whole to fit the window. */
+
+.sol {
+  /* Anchors the in-window dialogs (Options, Deck, About, Deal again). */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- Dialogs --------------------------------------------------------- */
+
+.sol-options fieldset {
+  margin-bottom: 8px;
+}
+
+.sol-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  justify-items: center;
+}
+
+/* The picks are <button>s wrapping a card back; strip 98.css's chrome. */
+.sol-deck-pick,
+.sol-deck-pick:active {
+  width: 60px;
+  height: 81px;
+  min-width: 0;
+  min-height: 0;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  text-shadow: none;
+  cursor: default;
+}
+
+.sol-deck-pick svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sol-deck-pick.is-selected {
+  outline: 2px solid var(--dialog-blue);
+}
+
+.sol-deck-pick:focus-visible {
+  outline: 1px dotted var(--text-color);
+}
+
+.sol-about {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sol-about-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+}
+
+.sol-about p {
+  margin: 0 0 4px;
+}
+
+.sol-deal-again {
+  margin: 4px 0 8px;
+}
+
+.sol-felt {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: #008000;
+}
+
+/* Sized in card units; the inline transform scales it to the felt. */
+.sol-table {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+/* Empty slot outlines, drawn the way sol.exe drew them: a faint rectangle. */
+.sol-slot {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+}
+
+/* The ring on an empty stock that you click to recycle the waste. */
+.sol-slot-stock::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  margin: -19px 0 0 -19px;
+  border: 4px solid rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+}
+
+.sol-card {
+  position: absolute;
+  width: 71px;
+  height: 96px;
+  user-select: none;
+  touch-action: none;
+  cursor: default;
+}
+
+.sol-card svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* A run being dragged rides above everything; it never receives pointer
+   events itself so hit-testing sees what's underneath. */
+.sol-card.is-dragging {
+  z-index: 100;
+  pointer-events: none;
+}
+
+.sol-status .status-bar-field:last-child {
+  flex: 0 0 auto;
+  padding: 0;
+}
+
+.sol-solve {
+  min-width: 0;
+  min-height: 18px;
+  padding: 0 8px;
+  font-size: 11px;
+}

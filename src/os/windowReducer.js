@@ -10,12 +10,21 @@ export const initialState = {
 
 export const actions = {
   // `app` is the registry entry; the reducer stays ignorant of the registry.
-  openApp: (appId, app) => ({
+  // `opts` hands a file to the window: `payload` is opaque to the reducer,
+  // `title` overrides the registry title, and `key` identifies the instance
+  // for multiInstance apps (e.g. "yekola/README.txt").
+  openApp: (appId, app, opts = {}) => ({
     type: 'OPEN_APP',
     appId,
-    title: app.title,
+    title: opts.title ?? app.title,
     defaultSize: app.defaultSize,
+    payload: opts.payload,
+    key: opts.key,
+    multiInstance: Boolean(app.multiInstance),
   }),
+  // Deliberately narrow: an app may retitle itself or swap its payload, but
+  // never reach geometry or stacking.
+  update: (id, patch) => ({ type: 'UPDATE_WINDOW', id, patch }),
   close: (id) => ({ type: 'CLOSE', id }),
   focus: (id) => ({ type: 'FOCUS', id }),
   minimize: (id) => ({ type: 'MINIMIZE', id }),
@@ -52,17 +61,31 @@ const patch = (state, id, changes) => ({
 export function windowReducer(state, action) {
   switch (action.type) {
     case 'OPEN_APP': {
-      // Single instance per app: reopening focuses and unminimizes the
-      // existing window rather than spawning a duplicate.
-      const existing = state.windows.find((w) => w.appId === action.appId)
-      if (existing) return raise(state, existing.id)
+      const { appId, title, defaultSize, payload, key, multiInstance } = action
 
-      const { appId, title, defaultSize } = action
+      // Single instance per app is the default: reopening swaps the payload
+      // into the existing window and raises it, so a viewer shows the new
+      // file instead of spawning a duplicate. A multiInstance app dedupes on
+      // (appId, key) instead — the same file focuses its window, a different
+      // file gets its own. Same file means same content, so the payload is
+      // left alone in that case.
+      const existing = multiInstance
+        ? state.windows.find((w) => w.appId === appId && w.key === key)
+        : state.windows.find((w) => w.appId === appId)
+      if (existing) {
+        const next = multiInstance
+          ? state
+          : patch(state, existing.id, { payload, title })
+        return raise(next, existing.id)
+      }
+
       const { x, y } = cascade(state.opened)
       const win = {
         id: state.nextId,
         appId,
         title,
+        payload,
+        key,
         x,
         y,
         w: defaultSize.w,
@@ -144,6 +167,17 @@ export function windowReducer(state, action) {
 
     case 'SET_RECT':
       return patch(state, action.id, action.rect)
+
+    case 'UPDATE_WINDOW': {
+      if (!state.windows.some((w) => w.id === action.id)) return state
+      // Whitelist rather than spread: apps must not be able to move or
+      // restack themselves through this path.
+      const changes = {}
+      if ('title' in action.patch) changes.title = action.patch.title
+      if ('payload' in action.patch) changes.payload = action.patch.payload
+      if (Object.keys(changes).length === 0) return state
+      return patch(state, action.id, changes)
+    }
 
     default:
       return state

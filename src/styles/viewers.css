@@ -1,0 +1,103 @@
+/* Notepad, Photos and Media Player — the programs a project's files open in. */
+
+.viewer-empty {
+  margin: 8px;
+  color: var(--button-shadow);
+  font-style: italic;
+}
+
+/* --- Notepad --------------------------------------------------------- */
+
+/* Fixedsys was Notepad's default; the stack degrades to any monospace. */
+.notepad-text {
+  width: 100%;
+  resize: none;
+  font-family: Fixedsys, 'Lucida Console', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.3;
+  white-space: pre-wrap;
+}
+
+/* --- Photos ---------------------------------------------------------- */
+
+.photos-toolbar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 2px;
+}
+
+.photos-toolbar button {
+  min-width: 0;
+  min-height: 21px;
+  padding: 0 8px;
+}
+
+.photos-counter {
+  margin-left: auto;
+  padding-right: 4px;
+}
+
+/* Grey mat behind the picture, sunk into the window like a real frame. */
+.photos-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--button-shadow);
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--window-frame);
+}
+
+.photos-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.photos-frame .viewer-empty {
+  color: var(--button-highlight);
+}
+
+/* --- Media Player ---------------------------------------------------- */
+
+.media-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--window-frame);
+}
+
+.media-video {
+  width: 100%;
+  max-height: 100%;
+}
+
+.media-transport {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+}
+
+.media-transport button {
+  min-width: 0;
+  min-height: 21px;
+  padding: 0 8px;
+}
+
+.media-seek {
+  flex: 1 1 auto;
+  min-width: 40px;
+}
+
+.media-time {
+  padding: 0 4px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,31 +1,57 @@
 {
   "positions": [
     {
-      "role": "Senior Software Engineer",
-      "org": "Company A",
-      "period": "2024 — Present",
-      "location": "City, Country",
-      "highlights": [
-        "An accomplishment with a concrete outcome or number.",
-        "Another accomplishment showing scope or ownership."
+      "role": "Private Python Instructor",
+      "company": "Self",
+      "location": "Remote",
+      "dates": "Nov 2024 - Present",
+      "status": "Running",
+      "tech": ["Python", "Scratch", "Curriculum Design"],
+      "bullets": [
+        "Teach Python and Scratch constructs: control flow, iteration, functions, and data structures",
+        "Devise hands-on coding exercises to strengthen logical reasoning and problem decomposition",
+        "Emphasize debugging, code clarity, and structured problem solving"
       ]
     },
     {
-      "role": "Software Engineer",
-      "org": "Company B",
-      "period": "2022 — 2024",
-      "location": "City, Country",
-      "highlights": [
-        "An accomplishment with a concrete outcome or number.",
-        "Another accomplishment showing scope or ownership."
+      "role": "Frontend Developer",
+      "company": "Yekola",
+      "location": "Toronto",
+      "dates": "Oct 2023 - Oct 2024",
+      "status": "Ended",
+      "tech": [
+        "React Native",
+        "Redux",
+        "UML",
+        "JavaScript",
+        "Agile",
+        "Team Leadership"
+      ],
+      "bullets": [
+        "Led 4 frontend devs at an early-stage EdTech startup building a language learning platform",
+        "Spearheaded early technical decisions on stack and architecture",
+        "Collaborated in Agile sprints to define features, review code, and align UI with product goals",
+        "Designed app flow and UX with UML, then built the mobile frontend using React-Native and Redux"
       ]
     },
     {
-      "role": "Junior Software Engineer",
-      "org": "Company C",
-      "period": "2021 — 2022",
-      "location": "City, Country",
-      "highlights": ["An accomplishment with a concrete outcome or number."]
+      "role": "Frontend Developer",
+      "company": "NLEats",
+      "location": "St. John's",
+      "dates": "May 2020 - Dec 2020",
+      "status": "Ended",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "Responsive Design",
+        "Agile",
+        "Mentorship"
+      ],
+      "bullets": [
+        "Mentored 3 new hires and volunteers on project's tech stack and provided resources",
+        "Developed and tested responsive web interfaces using React.js, ensuring clean component design",
+        "Participated in sprint planning, code reviews, and backlog refinement within an Agile team"
+      ]
     }
   ]
 }

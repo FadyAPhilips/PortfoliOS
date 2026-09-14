@@ -88,7 +88,8 @@ export default function Window({ win, focused }) {
       </div>
 
       <div className="window-body os-window-body">
-        <Body />
+        {/* Apps that don't take a file simply ignore both props. */}
+        <Body windowId={win.id} payload={win.payload} />
       </div>
 
       {!locked && (

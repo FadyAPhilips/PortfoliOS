@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import contact from '../content/contact.json'
+import { resumeName, resumePath } from './resumeFile'
 
 const ENDPOINT = 'https://api.web3forms.com/submit'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -210,10 +211,13 @@ export default function Contact() {
               </a>
             </li>
           ))}
-          {contact.resumeUrl && (
+          {/* The plain route to the resume, for anyone who would rather not
+              click through resume.exe. Downloads rather than opening a
+              viewer — `download` is honoured because the file is same-origin. */}
+          {resumePath && (
             <li>
-              <a href={contact.resumeUrl} target="_blank" rel="noreferrer">
-                Résumé
+              <a href={resumePath} download={resumeName}>
+                Résumé — {resumeName}
               </a>
             </li>
           )}

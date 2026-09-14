@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { APPS, APP_ORDER } from '../apps/registry'
 import { useWindowActions } from '../os/WindowManager'
+import site from '../content/site.json'
 import DesktopIcon from './DesktopIcon'
 
 export default function Desktop({ children, onBackgroundPointerDown }) {
@@ -17,6 +18,13 @@ export default function Desktop({ children, onBackgroundPointerDown }) {
         onBackgroundPointerDown?.()
       }}
     >
+      {/* Part of the wallpaper: rendered first so icons and windows sit
+          over it, and inert so it never catches a click. */}
+      <div className="wallpaper-text" aria-hidden="true">
+        <span className="wallpaper-name">{site.owner}</span>
+        <span className="wallpaper-tagline">{site.tagline}</span>
+      </div>
+
       <div className="icon-field">
         {APP_ORDER.map((appId) => (
           <DesktopIcon

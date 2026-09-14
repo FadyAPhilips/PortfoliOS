@@ -1,0 +1,374 @@
+/*
+  About Me — an early-MySpace profile rendered as a webpage inside the OS
+  window. Everything in here is deliberately *not* Win98 chrome: this is a
+  page being displayed by the browser, so it uses web typography and flat
+  1px web borders rather than the beveled system palette.
+*/
+
+.ms {
+  --ms-banner: #6699cc;
+  --ms-accent: #ff6600;
+  --ms-link: #003399;
+  --ms-rule: #8fa8c8;
+  --ms-page-bg: #dfe6ef;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--ms-page-bg);
+  font-family: Arial, Geneva, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #000;
+  /* The window is resizable, so columns respond to the frame, not the screen. */
+  container-type: inline-size;
+}
+
+/* --- Browser chrome ---------------------------------------------------- */
+
+.ms-chrome {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 4px;
+  background: var(--surface);
+  box-shadow: inset 0 -1px 0 var(--button-shadow);
+  /* Chrome is OS furniture, so it keeps the system face. */
+  font-family: 'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif;
+}
+
+.ms-chrome-label {
+  flex: 0 0 auto;
+  color: #3f3f3f;
+}
+
+.ms-chrome-url {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 2px 3px;
+  background: #fff;
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
+    inset 2px 2px var(--window-frame);
+}
+
+.ms-chrome-url span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ms-chrome-icon {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+}
+
+/* --- Page body --------------------------------------------------------- */
+
+.ms-page {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 10px;
+}
+
+.ms-columns {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 10px;
+  align-items: start;
+}
+
+/* Below ~560px of *window* width the two columns stop working; stack them. */
+@container (max-width: 560px) {
+  .ms-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Left column: identity --------------------------------------------- */
+
+.ms-panel {
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--ms-rule);
+}
+
+.ms-name {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  word-break: break-word;
+}
+
+/*
+  Sunken photo frame: dark on top/left, white on bottom/right — the inverse
+  of a raised button, so the image reads as pressed into the page.
+*/
+.ms-avatar-frame {
+  display: inline-block;
+  padding: 2px;
+  background: #fff;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  outline: 1px solid #b0b0b0;
+  line-height: 0;
+}
+
+.pixel-avatar {
+  display: block;
+  /* Keep the low-res grid crisp when the browser scales it. */
+  image-rendering: pixelated;
+}
+
+/*
+  A real photo dropped into public/assets/avatars/. Square-cropped to match
+  the generated placeholders, and left smooth — the pixel-art look belongs to
+  the fallback, not to artwork you supply.
+*/
+.avatar-photo {
+  display: block;
+  object-fit: cover;
+  background: #fff;
+}
+
+.ms-network {
+  margin: 8px 0 6px;
+  padding: 4px 5px;
+  border: 1px solid #c0c0c0;
+  background: #f7f7f7;
+  color: #333;
+}
+
+.ms-mood {
+  margin: 0 0 8px;
+}
+
+.ms-mood-label {
+  font-weight: bold;
+  color: var(--ms-accent);
+}
+
+.ms-stats {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #d8d8d8;
+  /* Same reason as .ms-interests — a long value must wrap, not widen. */
+  table-layout: fixed;
+}
+
+.ms-stats td {
+  word-break: break-word;
+}
+
+.ms-stats th,
+.ms-stats td {
+  padding: 2px 0;
+  font-size: 11px;
+  font-weight: normal;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #ececec;
+}
+
+.ms-stats th {
+  width: 44%;
+  padding-right: 6px;
+  color: #555;
+}
+
+.ms-stats td {
+  color: #000;
+}
+
+/* --- Right column: blurbs + friends ------------------------------------ */
+
+.ms-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ms-block {
+  border: 1px solid var(--ms-rule);
+  background: #fff;
+}
+
+/* Square corners, flat fill, white bold text — the MySpace section header. */
+.ms-banner {
+  margin: 0;
+  padding: 3px 6px;
+  background: var(--ms-banner);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.ms-block-body {
+  padding: 8px;
+}
+
+.ms-subhead {
+  margin: 0 0 3px;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--ms-accent);
+}
+
+.ms-blurb + .ms-blurb {
+  margin-top: 10px;
+}
+
+.ms-blurb p {
+  margin: 0 0 7px;
+}
+
+.ms-blurb p:last-child {
+  margin-bottom: 0;
+}
+
+/*
+  The MySpace interests table: tinted label column on the left, prose on the
+  right, hairline rules between rows. Sits flush inside the block — no body
+  padding — the way the original did.
+*/
+.ms-interests {
+  width: 100%;
+  border-collapse: collapse;
+  /*
+    Fixed layout, or auto-sizing lets a long value push the table wider than
+    its block and the prose gets clipped instead of wrapping.
+  */
+  table-layout: fixed;
+}
+
+.ms-interests td {
+  word-break: break-word;
+}
+
+/*
+  98.css sets `table { white-space: nowrap }` globally, and white-space
+  inherits — without this every cell of prose runs off the side of the block
+  instead of wrapping. Set on the table so all cells pick it up; the label
+  column re-declares nowrap for itself below.
+*/
+.ms-interests,
+.ms-stats {
+  white-space: normal;
+}
+
+.ms-interests th,
+.ms-interests td {
+  padding: 5px 7px;
+  font-size: 11px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #dfe6ef;
+}
+
+.ms-interests tr:last-child th,
+.ms-interests tr:last-child td {
+  border-bottom: none;
+}
+
+.ms-interests th {
+  width: 21%;
+  font-weight: bold;
+  color: var(--ms-accent);
+  background: #eef2f7;
+  border-right: 1px solid #dfe6ef;
+  white-space: nowrap;
+}
+
+@container (max-width: 560px) {
+  .ms-interests th {
+    width: 30%;
+    white-space: normal;
+  }
+}
+
+.ms-friend-count {
+  margin: 0 0 8px;
+}
+
+.ms-friend-count strong {
+  color: var(--ms-accent);
+}
+
+/* 4x2 grid of friend slots. */
+.ms-friends {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@container (max-width: 560px) {
+  .ms-friends {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ms-friend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+  min-width: 0;
+}
+
+.ms-friend-name {
+  color: var(--ms-link);
+  text-decoration: underline;
+  /* The early-web pointing hand, with no easing on the hover change. */
+  cursor: pointer;
+  transition: none;
+  word-break: break-word;
+}
+
+.ms-friend-name:hover {
+  color: #cc0000;
+  text-decoration: underline;
+}
+
+.ms-friend-name:visited {
+  color: #551a8b;
+}
+
+.ms-avatar-frame--sm {
+  padding: 1px;
+  border-width: 1px;
+}
+
+.ms-friend-caption {
+  color: #777;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+/* --- Footer ------------------------------------------------------------ */
+
+.ms-footer {
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px solid var(--ms-rule);
+  text-align: center;
+  color: #667;
+}
+
+/* Links inside the page use web-blue, not system colors. */
+.ms a {
+  color: var(--ms-link);
+}

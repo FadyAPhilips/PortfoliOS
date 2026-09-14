@@ -1,10 +1,62 @@
 {
-  "name": "Your Name",
+  "name": "Fady Philips",
   "role": "Software Engineer",
-  "summary": "A few sentences about who you are, what you build, and what you care about. This is the first thing most people will read, so lead with what makes your work distinctive.",
-  "details": [
+  "profileUrl": "http://www.yourspace.com/fadyphilips",
+
+  "_placeholder": "mood, stats, interests and both blurbs below are placeholder copy in the MySpace voice — replace with your own.",
+  "_photos": "Drop image files in public/assets/avatars/ and point `photo` at them, e.g. \"/assets/avatars/me.jpg\" (leading slash, no `public` in the path). Any entry left empty falls back to a generated pixel-art placeholder.",
+
+  "photo": "",
+  "mood": "Focused  :-)",
+
+  "stats": [
+    { "label": "Views", "value": "1,337" },
+    { "label": "Profile Type", "value": "Software Engineer" },
     { "label": "Location", "value": "City, Country" },
-    { "label": "Focus", "value": "Full-stack web development" },
-    { "label": "Currently", "value": "Open to opportunities" }
+    { "label": "Last Login", "value": "Today" },
+    { "label": "Member Since", "value": "8/15/2003" }
+  ],
+
+  "blurbs": {
+    "aboutMe": "Hey! I'm a software engineer who likes building things that feel good to use — the kind of small details most people never notice but would miss immediately if they were gone. Mostly full-stack web work these days. I care about clean interfaces, fast feedback loops, and code the next person can actually read.\n\nWhen I'm not shipping, I'm usually taking something apart to see how it works, or losing an evening to a rabbit hole about interface design history. This site is one of those rabbit holes.",
+    "whoIdLikeToMeet": "Engineers and designers who sweat the details. People building weird, delightful things on the web that don't look like everything else. Teams that care about craft and ship anyway.\n\nAlso: anyone who still remembers what it felt like to customize a profile page with hand-written CSS at 2am."
+  },
+
+  "interests": [
+    {
+      "label": "General",
+      "value": "Cooking badly and eating well. Long walks with a podcast on. Board games with too many rules. Taking photos of buildings nobody else finds interesting."
+    },
+    {
+      "label": "Music",
+      "value": "Whatever's loud enough to drown out an open-plan office. Currently on a heavy 2000s indie kick I'm not apologising for."
+    },
+    {
+      "label": "Movies",
+      "value": "Sci-fi with practical effects, heist films, and anything where the production design is doing more work than the plot."
+    },
+    {
+      "label": "Television",
+      "value": "Documentaries about things I'll never do — deep sea salvage, competitive baking, restoring old arcade cabinets."
+    },
+    {
+      "label": "Books",
+      "value": "Non-fiction about how things got made. Design history, engineering disasters, and the occasional novel I'll take three months to finish."
+    },
+    {
+      "label": "Heroes",
+      "value": "Anyone who documents their work properly. My grandmother. The person who first decided software should have an undo button."
+    }
+  ],
+
+  "friends": [
+    { "name": "Tom", "variant": "tom", "caption": "Your first friend", "photo": "" },
+    { "name": "Gill Bates", "caption": "Redmond, WA", "photo": "" },
+    { "name": "Zark Muckerberg", "caption": "The Facebook", "photo": "" },
+    { "name": "Linos Torvalds", "caption": "Just a hobby", "photo": "" },
+    { "name": "Steve Jerbs", "caption": "One more thing", "photo": "" },
+    { "name": "Elon Tusk", "caption": "Occupy Mars", "photo": "" },
+    { "name": "Jeff Bozos", "caption": "Prime member", "photo": "" },
+    { "name": "Ada Loveless", "caption": "First programmer", "photo": "" }
   ]
 }

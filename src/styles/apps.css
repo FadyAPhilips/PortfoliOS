@@ -100,30 +100,52 @@
   margin-bottom: 0;
 }
 
+/* Task Manager processes list (Experience). Fixed layout so the Tech column
+   can't be widened by a long tech list — it clips instead. */
+.tm-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Role takes whatever the other three leave. */
+.tm-table th:nth-child(2) {
+  width: 16%;
+}
+
+.tm-table th:nth-child(3) {
+  width: 13%;
+}
+
+.tm-table th:nth-child(4) {
+  width: 40%;
+}
+
+/* 98.css sets `white-space: nowrap` on tables, so an overlong role or tech
+   list runs past its cell. Clip it with an ellipsis rather than let it spill. */
+.tm-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The notes pane carries the actual resume copy, so it gets real room. The
+   floor keeps it from resizing as you click between a 3- and 4-bullet entry;
+   the ceiling stops it squeezing the list out of a short window. */
+.tm-detail {
+  min-height: 148px;
+  max-height: 55%;
+  padding: 8px 10px;
+  overflow: auto;
+}
+
+.tm-detail .bullets {
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
+.tm-detail .bullets li {
+  margin-bottom: 5px;
+}
+
 fieldset {
   margin-bottom: 10px;
-}
-
-/* Solitaire's felt table. */
-.felt {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #008000;
-  box-shadow: inset -1px -1px var(--button-highlight),
-    inset 1px 1px var(--button-shadow);
-}
-
-.felt-note {
-  text-align: center;
-  color: #fff;
-}
-
-.felt-note p:first-child {
-  font-size: 18px;
-  margin: 0;
-}
-
-.felt-note .app-sub {
-  color: #bfe0bf;
 }

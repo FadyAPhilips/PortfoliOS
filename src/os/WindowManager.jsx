@@ -16,7 +16,10 @@ export function WindowManagerProvider({ children }) {
   // Bound once — every consumer gets the same function identities.
   const api = useMemo(
     () => ({
-      openApp: (appId) => dispatch(actions.openApp(appId, APPS[appId])),
+      // `opts` is { payload, title, key } — see actions.openApp.
+      openApp: (appId, opts) =>
+        dispatch(actions.openApp(appId, APPS[appId], opts)),
+      update: (id, patch) => dispatch(actions.update(id, patch)),
       close: (id) => dispatch(actions.close(id)),
       focus: (id) => dispatch(actions.focus(id)),
       minimize: (id) => dispatch(actions.minimize(id)),

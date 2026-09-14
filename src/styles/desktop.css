@@ -6,6 +6,39 @@
 }
 
 /*
+  Name and title printed on the wallpaper, top right. The system font at this
+  size stays blocky — its glyphs are pixel outlines — which is the point.
+  Shadows scale with the type so they still read at 72px.
+*/
+.wallpaper-text {
+  position: absolute;
+  top: 30px;
+  right: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  color: #fff;
+  font-family: 'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wallpaper-name {
+  font-size: 108px;
+  font-weight: bold;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
+}
+
+.wallpaper-tagline {
+  font-size: 42px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+/*
   Icons flow top-left and wrap into a new column, the way the Win98 desktop
   arranged them. The fixed height is what forces column-first wrapping.
 */
@@ -54,8 +87,8 @@
 }
 
 .desktop-icon-img {
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.35));
 }
 
@@ -93,5 +126,24 @@
 
   .desktop-icon {
     width: 68px;
+  }
+
+  /* Icons flow in rows across the top here, so the wallpaper text drops
+     to the bottom corner, above the taskbar. */
+  .wallpaper-text {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+    gap: 4px;
+  }
+
+  .wallpaper-name {
+    font-size: 36px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  .wallpaper-tagline {
+    font-size: 16px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
   }
 }

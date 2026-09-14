@@ -23,6 +23,9 @@ export const Z = {
   WINDOW_BASE: 10,
   TASKBAR: 1000,
   START_MENU: 1001,
+  // Full-screen effects that paint over everything, like Solitaire's win
+  // cascade did on a real Win98 desktop.
+  OVERLAY: 2000,
 }
 
 // When dragging, at least this much window must stay on the desktop so a

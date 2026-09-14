@@ -68,4 +68,84 @@
     <path d="M3 19l12-1v11l-12-3z" fill="#0a5fc0"/>
     <path d="M17 17.5l12-1v13l-12-3z" fill="#ffd020"/>
   </symbol>
+
+  <!-- resume.exe: a document with a download arrow. -->
+  <symbol id="icon-resume" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <path d="M5 2h13l6 6v22H5z" fill="#fff" stroke="#000" stroke-width="1"/>
+    <path d="M18 2v6h6" fill="#dfdfdf" stroke="#000" stroke-width="1"/>
+    <rect x="8" y="12" width="12" height="1" fill="#808080"/>
+    <rect x="8" y="15" width="12" height="1" fill="#808080"/>
+    <rect x="8" y="18" width="8" height="1" fill="#808080"/>
+    <path d="M22 17h6v7h4l-7 7-7-7h4z" fill="#00a000" stroke="#000" stroke-width="1"/>
+  </symbol>
+
+  <!-- Programs launched from files in the Projects explorer. -->
+
+  <symbol id="icon-notepad" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <rect x="6" y="5" width="20" height="24" fill="#fff" stroke="#000" stroke-width="1"/>
+    <rect x="6" y="5" width="20" height="4" fill="#0a5fc0"/>
+    <rect x="9" y="3" width="2" height="4" fill="#808080"/>
+    <rect x="13" y="3" width="2" height="4" fill="#808080"/>
+    <rect x="17" y="3" width="2" height="4" fill="#808080"/>
+    <rect x="21" y="3" width="2" height="4" fill="#808080"/>
+    <rect x="9" y="13" width="14" height="1" fill="#808080"/>
+    <rect x="9" y="16" width="14" height="1" fill="#808080"/>
+    <rect x="9" y="19" width="10" height="1" fill="#808080"/>
+    <rect x="9" y="22" width="14" height="1" fill="#808080"/>
+  </symbol>
+
+  <symbol id="icon-photos" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <rect x="3" y="5" width="26" height="22" fill="#8b5a2b" stroke="#000" stroke-width="1"/>
+    <rect x="6" y="8" width="20" height="16" fill="#8fc8ff" stroke="#000" stroke-width="1"/>
+    <rect x="6" y="18" width="20" height="6" fill="#00a000"/>
+    <path d="M9 18l5-6 5 6z" fill="#008000"/>
+    <rect x="19" y="10" width="4" height="4" fill="#ffd020"/>
+  </symbol>
+
+  <symbol id="icon-media" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <rect x="3" y="4" width="26" height="19" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+    <rect x="6" y="7" width="20" height="13" fill="#000"/>
+    <path d="M13 10l8 4-8 4z" fill="#00a000"/>
+    <rect x="12" y="23" width="8" height="2" fill="#808080"/>
+    <rect x="8" y="25" width="16" height="3" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+  </symbol>
+
+  <!-- File types shown inside a project folder. Same dog-eared page each time. -->
+
+  <symbol id="icon-file-txt" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <path d="M7 2h13l6 6v22H7z" fill="#fff" stroke="#000" stroke-width="1"/>
+    <path d="M20 2v6h6" fill="#dfdfdf" stroke="#000" stroke-width="1"/>
+    <rect x="10" y="12" width="12" height="1" fill="#808080"/>
+    <rect x="10" y="15" width="12" height="1" fill="#808080"/>
+    <rect x="10" y="18" width="8" height="1" fill="#808080"/>
+    <rect x="10" y="21" width="12" height="1" fill="#808080"/>
+    <rect x="10" y="24" width="6" height="1" fill="#808080"/>
+  </symbol>
+
+  <symbol id="icon-file-jpg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <path d="M7 2h13l6 6v22H7z" fill="#fff" stroke="#000" stroke-width="1"/>
+    <path d="M20 2v6h6" fill="#dfdfdf" stroke="#000" stroke-width="1"/>
+    <rect x="10" y="11" width="12" height="14" fill="#8fc8ff" stroke="#000" stroke-width="1"/>
+    <rect x="10" y="20" width="12" height="5" fill="#00a000"/>
+    <rect x="17" y="13" width="3" height="3" fill="#ffd020"/>
+  </symbol>
+
+  <symbol id="icon-file-mp4" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <path d="M7 2h13l6 6v22H7z" fill="#fff" stroke="#000" stroke-width="1"/>
+    <path d="M20 2v6h6" fill="#dfdfdf" stroke="#000" stroke-width="1"/>
+    <rect x="10" y="11" width="12" height="14" fill="#000"/>
+    <rect x="11" y="13" width="1" height="1" fill="#fff"/>
+    <rect x="11" y="16" width="1" height="1" fill="#fff"/>
+    <rect x="11" y="19" width="1" height="1" fill="#fff"/>
+    <rect x="11" y="22" width="1" height="1" fill="#fff"/>
+    <path d="M14 14l6 4-6 4z" fill="#00a000"/>
+  </symbol>
+
+  <symbol id="icon-file-url" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <path d="M7 2h13l6 6v22H7z" fill="#fff" stroke="#000" stroke-width="1"/>
+    <path d="M20 2v6h6" fill="#dfdfdf" stroke="#000" stroke-width="1"/>
+    <circle cx="16" cy="18" r="6" fill="#0a5fc0" stroke="#000" stroke-width="1"/>
+    <rect x="10" y="17" width="12" height="1" fill="#8fc8ff"/>
+    <rect x="15" y="12" width="1" height="12" fill="#8fc8ff"/>
+  </symbol>
 </svg>

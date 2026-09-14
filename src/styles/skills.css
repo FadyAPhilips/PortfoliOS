@@ -1,0 +1,94 @@
+/*
+  Skills — a Device Manager style inventory.
+
+  Deliberately carries no proficiency bars, star ratings, meters or scores.
+  Device Manager lists what's installed without grading it; this does the
+  same. Don't add a visual affordance here that implies ranking.
+*/
+
+.skills {
+  /* Anchors the Properties dialog, which is modal to this window alone. */
+  position: relative;
+}
+
+.skills .tree-view {
+  margin-bottom: 3px;
+}
+
+/* Win95 used the arrow cursor everywhere, including over hit targets. */
+.skills summary {
+  cursor: default;
+}
+
+/*
+  Tree leaves are <button>s so they stay keyboard reachable, which walks into
+  the same hazard as desktop icons and Start menu items: 98.css styles every
+  button as a raised grey rectangle. Unwinding it means all of box-shadow, the
+  75x23 minimums, the padding, AND its `color: transparent` + `text-shadow`
+  text-rendering trick — miss one and each skill renders as a grey button, or
+  as invisible text.
+*/
+.skill-leaf {
+  box-shadow: none;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 2px;
+  background: transparent;
+  color: var(--text-color);
+  text-shadow: none;
+  text-align: left;
+  cursor: default;
+}
+
+.skill-leaf.selected {
+  background: var(--dialog-blue);
+  color: var(--button-highlight);
+}
+
+.skill-leaf:focus-visible {
+  outline: 1px dotted var(--text-color);
+}
+
+.skill-leaf.selected:focus-visible {
+  outline-color: var(--button-highlight);
+}
+
+/* Catches clicks meant for the tree behind, the way a Win95 modal does.
+   Untinted on purpose — Win95 never dimmed the parent window. */
+.props-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.props-dialog {
+  width: 300px;
+  max-width: calc(100% - 16px);
+}
+
+.props-panel .window-body {
+  min-height: 92px;
+}
+
+/* Etched divider: dark line over light, the Win95 groove. */
+.props-rule {
+  border: none;
+  border-top: 1px solid var(--button-shadow);
+  border-bottom: 1px solid var(--button-highlight);
+  margin: 6px 0 8px;
+}
+
+.props-empty {
+  margin: 0;
+  color: var(--button-shadow);
+  font-style: italic;
+}
+
+.props-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

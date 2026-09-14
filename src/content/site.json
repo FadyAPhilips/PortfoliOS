@@ -1,5 +1,9 @@
 {
   "brand": "PortfoliOS",
-  "owner": "Your Name",
-  "startMenuLabel": "Start"
+  "owner": "Fady Philips",
+  "tagline": "Software Developer",
+  "startMenuLabel": "Start",
+
+  "_resumeNote": "Drop the PDF in public/assets/resume/ and point this at it — see the README there. The saved filename comes from this path's basename, so name the file how you want it to land in someone's Downloads folder. Until this is filled in, the wizard's Finish button stays disabled and the Contact link is hidden.",
+  "resumePath": ""
 }
