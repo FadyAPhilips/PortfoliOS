@@ -3,90 +3,86 @@
     {
       "name": "Languages",
       "items": [
-        { "name": "JavaScript", "description": "" },
-        { "name": "TypeScript", "description": "" },
-        { "name": "Python", "description": "" },
-        { "name": "C/C++", "description": "" },
-        { "name": "Java", "description": "" },
-        { "name": "Bash", "description": "" },
-        { "name": "HTML5", "description": "" },
-        { "name": "CSS3", "description": "" }
+        { "name": "JavaScript", "description": "Core language across nearly all frontend work — React.js, React Native, and the Neutron game engine, among others." },
+        { "name": "TypeScript", "description": "Used for LancerFit's frontend and backend, and for the My-Flix V2 web app built with React and AWS Amplify." },
+        { "name": "Python", "description": "Used to teach programming fundamentals as a private instructor, and to build the autonomous Raspberry Pi smart car's MQTT and OpenCV pipeline." },
+        { "name": "C/C++", "description": "Built systems programming projects in C (a distributed file system, a Mini Bash shell, a process tree analyzer) and Space Wars, a game built in C++ with SFML." },
+        { "name": "Java", "description": "Primary language for several undergrad and grad courses, including Advanced Computing Concepts and Nature Inspired Computing." },
+        { "name": "Bash", "description": "Used for scripting in systems programming coursework and to build a CI/CD pipeline generating per-PR Docker environments for QA." },
+        { "name": "HTML5", "description": "Used across web projects, including an AI-powered HTML generator built with the OpenAI API." },
+        { "name": "CSS3", "description": "Used across web projects for styling and layout, including responsive interfaces at NLEats." }
       ]
     },
     {
       "name": "Frontend & Mobile",
       "items": [
-        { "name": "React.js", "description": "" },
-        { "name": "React Native", "description": "" },
-        { "name": "Redux", "description": "" },
-        { "name": "Redux Toolkit", "description": "" },
-        { "name": "SwiftUI", "description": "" },
-        { "name": "Expo", "description": "" },
-        { "name": "Storybook", "description": "" },
-        { "name": "pygame", "description": "" }
+        { "name": "React.js", "description": "Built responsive web UIs at NLEats and developed the Neutron game engine (a Bomberman clone) with ECS-based components." },
+        { "name": "React Native", "description": "Led mobile frontend development at Yekola for a language learning platform, and built the LancerFit and GymTheory apps with Expo." },
+        { "name": "Redux", "description": "Used for state management on Yekola's React Native app." },
+        { "name": "Redux Toolkit", "description": "Managed global game state for the Neutron React game engine, with a focus on performance optimization." },
+        { "name": "SwiftUI", "description": "Designed and built an iPad car dashboard UI for the Ottawa Infotainment Hackathon, placing 2nd." },
+        { "name": "Expo", "description": "Used to build and ship cross-platform mobile apps, including LancerFit and GymTheory." },
+        { "name": "Storybook", "description": "Used briefly while building a personal component library, to develop and preview UI components in isolation." },
+        { "name": "pygame", "description": "Built the controller UI for the autonomous Raspberry Pi smart car, streaming live video with manual and autonomous mode controls." }
       ]
     },
     {
       "name": "Backend & Cloud",
       "items": [
-        { "name": "Node.js", "description": "" },
-        { "name": "AWS (Lambda, DynamoDB, API Gateway, Amplify)", "description": "" },
-        { "name": "Django", "description": "" },
-        { "name": "Firebase", "description": "" },
-        { "name": "MySQL", "description": "" },
-        { "name": "MongoDB", "description": "" },
-        { "name": "PostgreSQL", "description": "" },
-        { "name": "MS SQL Server", "description": "" }
+        { "name": "Node.js", "description": "Used for LancerFit's backend, built with Node.js and TypeScript." },
+        { "name": "AWS (Lambda, DynamoDB, API Gateway, Amplify)", "description": "Migrated My-Flix V2's backend to AWS Serverless (Amplify, Lambda), cutting infrastructure costs 90%; used DynamoDB and Lambda for GymTheory's microservices backend." },
+        { "name": "Django", "description": "Used to build a project for the Internet Applications course in grad school." },
+        { "name": "Firebase", "description": "Used to deploy the AI HTML Generator via an automated CI/CD pipeline." },
+        { "name": "MongoDB", "description": "Original database for My-Flix's MERN stack, before migrating to AWS Serverless." },
+        { "name": "PostgreSQL", "description": "Used for LancerFit's backend database." },
+        { "name": "MS SQL Server", "description": "Used in the Advanced Databases course in grad school." }
       ]
     },
     {
       "name": "DevOps & Tooling",
       "items": [
-        { "name": "Docker", "description": "" },
-        { "name": "Git", "description": "" },
-        { "name": "GitHub Actions", "description": "" },
-        { "name": "CI/CD", "description": "" },
-        { "name": "Jira", "description": "" },
-        { "name": "Linux", "description": "" },
-        { "name": "Unix", "description": "" },
-        { "name": "Network Security", "description": "" },
-        { "name": "Selenium", "description": "" }
+        { "name": "Docker", "description": "Used for LancerFit's deployment, and to containerize per-PR test environments in a CI/CD pipeline built to let QA test multiple branches simultaneously." },
+        { "name": "Git", "description": "Used across all projects for version control." },
+        { "name": "GitHub Actions", "description": "Powers the PR Automation Pipeline, generating a Docker environment for every PR and storing branch-associated images as GitHub Artifacts." },
+        { "name": "CI/CD", "description": "Built pipelines for the AI HTML Generator (deploy to Firebase) and the PR Automation Pipeline (per-branch Docker environments for QA)." },
+        { "name": "Jira", "description": "Used for Agile sprint tracking at Yekola and NLEats, and while building LancerFit with the team." },
+        { "name": "Linux", "description": "Used for systems programming coursework, including a distributed file system and a Mini Bash shell built from scratch." },
+        { "name": "Unix", "description": "Used for systems programming coursework, including a distributed file system and a Mini Bash shell built from scratch." },
+        { "name": "Network Security", "description": "Completed a Cybersecurity Workshop covering ethical hacking, network defense, and digital forensics." },
+        { "name": "Selenium", "description": "Used Selenium with Java for a web-scraping project in a course." }
       ]
     },
     {
       "name": "Systems & Embedded",
       "items": [
-        { "name": "Raspberry Pi", "description": "" },
-        { "name": "MQTT", "description": "" },
-        { "name": "OpenCV", "description": "" },
-        { "name": "Computer Vision", "description": "" },
-        { "name": "Autonomous Navigation", "description": "" }
+        { "name": "Raspberry Pi", "description": "Core hardware for the autonomous 4WD smart car — architected the real-time communications backend running on it." },
+        { "name": "MQTT", "description": "Built a real-time MQTT backend relaying motor commands, telemetry, and mode switches between the Raspberry Pi and a laptop over local WiFi at sub-10ms latency." },
+        { "name": "OpenCV", "description": "Developed an overhead camera pipeline for live position and heading tracking of the smart car." },
+        { "name": "Computer Vision", "description": "Used for live position and heading tracking via an overhead camera pipeline on the autonomous smart car." },
+        { "name": "Autonomous Navigation", "description": "Implemented autonomous waypoint navigation with obstacle avoidance and stuck recovery on the smart car, which won Best Overall Graduate Demo at Winter 2026 CS Demo Day." }
       ]
     },
     {
       "name": "Design & Architecture",
       "items": [
-        { "name": "OOP", "description": "" },
-        { "name": "ECS", "description": "" },
-        { "name": "MVC", "description": "" },
-        { "name": "Microservices", "description": "" },
-        { "name": "REST API", "description": "" },
-        { "name": "Agile", "description": "" },
-        { "name": "SCRUM", "description": "" },
-        { "name": "Figma", "description": "" },
-        { "name": "UI/UX Design", "description": "" }
+        { "name": "OOP", "description": "Applied across systems programming coursework in C, and in Space Wars, a C++ game built with SFML." },
+        { "name": "ECS", "description": "Used to architect the Neutron React game engine and Space Wars, structuring game logic around reusable components." },
+        { "name": "Microservices", "description": "Architected GymTheory's backend using AWS DynamoDB and Lambda in a microservices pattern." },
+        { "name": "REST API", "description": "Integrated RESTful APIs with AWS Serverless for My-Flix V2, working with JSON data models." },
+        { "name": "Agile", "description": "Worked in Agile/Scrum sprints at Yekola and NLEats, and while building LancerFit with the team." },
+        { "name": "Figma", "description": "Led UI/UX design and prototyping for LancerFit, from wireframes through stakeholder approval to a working prototype; also used for the Ottawa Infotainment Hackathon dashboard and My-Flix V2." },
+        { "name": "UI/UX Design", "description": "Led UI/UX design for LancerFit and the Ottawa Infotainment Hackathon iPad dashboard, prototyping in Figma before implementation." }
       ]
     },
     {
       "name": "AI & LLM Tools",
       "items": [
-        { "name": "Claude Code", "description": "" },
-        { "name": "OpenAI API", "description": "" },
-        { "name": "ChatGPT", "description": "" },
-        { "name": "Prompt Engineering", "description": "" },
-        { "name": "RAG", "description": "" },
-        { "name": "AI Agents", "description": "" },
-        { "name": "MCP", "description": "" }
+        { "name": "Claude Code", "description": "Used throughout LancerFit's development, treating generated output as proposals requiring architectural review." },
+        { "name": "OpenAI API", "description": "Used to build the AI HTML Generator, generating HTML from natural-language prompts." },
+        { "name": "Prompt Engineering", "description": "Applied across AI-assisted development workflows, including work with Claude Code and the OpenAI API." },
+        { "name": "RAG", "description": "Used RAG in research and a project during grad school." },
+        { "name": "AI Agents", "description": "Used agentic coding tools like Claude Code as part of AI-assisted development workflows, reviewing generated output before integrating it." },
+        { "name": "Agent-Based Modeling", "description": "Modeled phantom traffic jams using agent-based simulation in a course project." }
       ]
     }
   ]
