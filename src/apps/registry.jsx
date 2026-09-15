@@ -5,6 +5,7 @@ import Skills from './Skills'
 import Contact from './Contact'
 import Solitaire from './solitaire/Solitaire'
 import ResumeWizard from './ResumeWizard'
+import SkillProperties from './SkillProperties'
 import Notepad from './Notepad'
 import Photos from './Photos'
 import MediaPlayer from './MediaPlayer'
@@ -72,6 +73,15 @@ export const APPS = {
     // table scales down, never up, in smaller windows.
     defaultSize: { w: 616, h: 520 },
     Component: Solitaire,
+  },
+
+  // Opened from the Skills tree, never from the desktop. Single-instance:
+  // picking another skill swaps this window's payload and title.
+  skillprops: {
+    title: 'Properties',
+    icon: 'icon-skills',
+    defaultSize: { w: 360, h: 300 },
+    Component: SkillProperties,
   },
 
   // Programs that files in My Projects open in. Not in APP_ORDER, so they

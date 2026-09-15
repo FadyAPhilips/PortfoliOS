@@ -67,6 +67,15 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 - **Media Player is keyed on `src`** so a new clip remounts with fresh transport state. `stop()` rewinds *before* the asynchronous `pause` event fires, so `onPause` reads `currentTime === 0` and reports Stopped rather than Paused.
 - The `MenuBar` strips (File Edit View Help) are decorative — `aria-hidden`, not focusable. There is nothing for those menus to do in a read-only portfolio.
 
+### Skills program (Device Manager)
+
+`src/apps/Skills.jsx` is a Device Manager style inventory tree. 98.css draws the `+`/`-` boxes, dotted connectors and indentation from `<details>`/`<summary>` alone, so expand/collapse needs no JavaScript.
+
+- **No proficiency bars, star ratings, meters or scores anywhere.** Device Manager lists what is installed without grading it; this does the same. Don't add an affordance here that implies ranking — `skills.css` carries the same note.
+- Tree leaves are `<button>`s, so 98.css's global button styling has to be unwound wholesale (see `skills.css`) — `box-shadow`, the 75x23 minimums, padding, and the `color: transparent` + `text-shadow` trick.
+- **Clicking a leaf opens `skillprops` as a real desktop window** (`src/apps/SkillProperties.jsx`), not an in-pane modal — it drags, resizes, minimizes and gets its own taskbar button. It's registered outside `APP_ORDER`, so it only ever opens from the tree, and it's **single-instance**: picking another skill swaps that window's payload and title instead of leaving fifty-odd windows behind. Its tab panel takes the flex slack so the description scrolls when the window is resized.
+- The shared `.props-*` styles in `skills.css` are also used by `src/apps/Dialog.jsx` for Solitaire's dialogs — don't delete them along with anything Skills stops using.
+
 ### Resume (resume.exe)
 
 `src/apps/ResumeWizard.jsx` is a three-page Win98 setup wizard — Welcome, a fake copy step with a filling progress bar, then Finish — whose Finish button downloads the resume PDF.
@@ -74,7 +83,8 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 - **The PDF is committed to `public/assets/resume/`, deliberately.** The HTML `download` attribute is honoured **only for same-origin URLs**; point it at Google Drive, Dropbox or any other host and every browser ignores it and navigates instead, so the file opens in a viewer tab rather than landing in Downloads with a clean name. That, not repo size, is why it lives here. See the README in that folder.
 - **`resumePath` in `site.json` is the single source of truth**, read through `src/apps/resumeFile.js`, which also derives the saved filename from the path's basename. Both the wizard and the Contacts list in Contact Me consume it — Contact's old `resumeUrl` field is gone. Name the PDF the way it should land in someone's Downloads folder.
 - With no path set, Finish is disabled and the wizard says so, and Contact's Résumé link hides itself — the same convention as Contact's missing `accessKey`, rather than a 404.
-- **Finish is a real `<a download>`, not a scripted click**, so the save is user-initiated and no popup blocker is involved. 98.css only styles `<button>`, so `.wizard-finish` rebuilds the raised bevel and its pressed state by hand from the palette tokens.
+- **The save fires when the progress bar reaches 100%**, before the Complete page appears — the bar finishing *is* the install. Finish then just closes the window, as a real installer's did. The click is a synthesized `<a download>`, which works because it lands ~1.5s after the Next click, inside the window where browsers still treat the page as user-activated. The Complete page also carries a plain "Save it again" link for any browser that declines anyway.
+- **The saved filename comes from the path's basename**, so a file misnamed on disk (say `…Resume.pdf.pdf`) silently serves the SPA's `index.html` instead of a PDF. If the download produces an HTML file, check the filename before anything else.
 
 ### Solitaire program
 

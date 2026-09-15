@@ -11,6 +11,23 @@ const WELCOME = 0
 const COPYING = 1
 const DONE = 2
 
+/**
+ * Kicks off the save. A real <a download> click rather than a navigation, so
+ * the browser writes the file instead of opening a viewer. It fires about a
+ * second and a half after the Next click, which keeps it inside the window
+ * where browsers still treat the page as user-activated — the Complete page
+ * offers a plain link as well, for anything that declines anyway.
+ */
+function saveFile(href, filename) {
+  const a = document.createElement('a')
+  a.href = href
+  a.download = filename
+  a.rel = 'noopener'
+  document.body.append(a)
+  a.click()
+  a.remove()
+}
+
 export default function ResumeWizard({ windowId }) {
   const { close } = useWindowActions()
   const [step, setStep] = useState(WELCOME)
@@ -29,6 +46,8 @@ export default function ResumeWizard({ windowId }) {
       setProgress(p)
       if (p === 100) {
         clearInterval(tick)
+        // The bar finishing IS the install: save first, then show Complete.
+        if (resumePath) saveFile(resumePath, resumeName)
         done = setTimeout(() => setStep(DONE), 400)
       }
     }, 60)
@@ -96,12 +115,17 @@ export default function ResumeWizard({ windowId }) {
               {configured ? (
                 <>
                   <p>
-                    Setup has finished installing the resume. Click Finish to
-                    save <strong>{resumeName}</strong>.
+                    Setup has finished installing the resume.{' '}
+                    <strong>{resumeName}</strong> has been saved to your
+                    Downloads folder.
                   </p>
                   <p className="wizard-note">
-                    Thanks for reading — the fastest way to reach me is Contact
-                    Me.
+                    Didn&rsquo;t start?{' '}
+                    <a href={resumePath} download={resumeName}>
+                      Save it again
+                    </a>
+                    . Thanks for reading — the fastest way to reach me is
+                    Contact Me.
                   </p>
                 </>
               ) : (
@@ -127,21 +151,11 @@ export default function ResumeWizard({ windowId }) {
         </button>
 
         {step === DONE ? (
-          configured ? (
-            <a
-              className="wizard-finish"
-              href={resumePath}
-              download={resumeName}
-              // Same-origin only: cross-origin, browsers ignore `download`
-              // and navigate instead.
-            >
-              Finish
-            </a>
-          ) : (
-            <button type="button" disabled>
-              Finish
-            </button>
-          )
+          // The file is already saved by now, so Finish just dismisses the
+          // installer — which is what a real one's Finish did.
+          <button type="button" onClick={() => close(windowId)}>
+            Finish
+          </button>
         ) : (
           <button type="button" disabled={step === COPYING} onClick={next}>
             Next &gt;

@@ -73,6 +73,28 @@
   min-height: 92px;
 }
 
+/*
+  Skill Properties is a real window, so its tab panel takes the slack and the
+  description scrolls — otherwise resizing the window would only stretch the
+  gap above the OK button.
+*/
+.skill-props .props-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.skill-props .props-panel .window-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.skill-props .props-actions {
+  flex: 0 0 auto;
+}
+
 /* Etched divider: dark line over light, the Win95 groove. */
 .props-rule {
   border: none;
