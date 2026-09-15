@@ -1,57 +1,48 @@
-{
-  "positions": [
-    {
-      "role": "Private Python Instructor",
-      "company": "Self",
-      "location": "Remote",
-      "dates": "Nov 2024 - Present",
-      "status": "Running",
-      "tech": ["Python", "Scratch", "Curriculum Design"],
-      "bullets": [
-        "Teach Python and Scratch constructs: control flow, iteration, functions, and data structures",
-        "Devise hands-on coding exercises to strengthen logical reasoning and problem decomposition",
-        "Emphasize debugging, code clarity, and structured problem solving"
-      ]
-    },
-    {
-      "role": "Frontend Developer",
-      "company": "Yekola",
-      "location": "Toronto",
-      "dates": "Oct 2023 - Oct 2024",
-      "status": "Ended",
-      "tech": [
-        "React Native",
-        "Redux",
-        "UML",
-        "JavaScript",
-        "Agile",
-        "Team Leadership"
-      ],
-      "bullets": [
-        "Led 4 frontend devs at an early-stage EdTech startup building a language learning platform",
-        "Spearheaded early technical decisions on stack and architecture",
-        "Collaborated in Agile sprints to define features, review code, and align UI with product goals",
-        "Designed app flow and UX with UML, then built the mobile frontend using React-Native and Redux"
-      ]
-    },
-    {
-      "role": "Frontend Developer",
-      "company": "NLEats",
-      "location": "St. John's",
-      "dates": "May 2020 - Dec 2020",
-      "status": "Ended",
-      "tech": [
-        "React.js",
-        "JavaScript",
-        "Responsive Design",
-        "Agile",
-        "Mentorship"
-      ],
-      "bullets": [
-        "Mentored 3 new hires and volunteers on project's tech stack and provided resources",
-        "Developed and tested responsive web interfaces using React.js, ensuring clean component design",
-        "Participated in sprint planning, code reviews, and backlog refinement within an Agile team"
-      ]
-    }
-  ]
-}
+[
+  {
+    "company": "Private Python Instructor",
+    "location": "Remote",
+    "role": "Private Python Instructor",
+    "dates": "Nov 2024 - Present",
+    "status": "Running",
+    "volunteer": false,
+    "tech": ["Python", "Scratch", "Curriculum Design"],
+    "description": "I found this gig through a connection at church, and it's been ongoing since. The material is fairly foundational: arrays, loops, functions, control flow, nothing at the level of frontend frameworks or how the web works, just solid coding fundamentals. But how I teach it has changed a lot since I started. Early on I realized it really comes down to practice, so I leaned more on homework and repetition. I also started using real world analogies to make abstract concepts click, like explaining a list as a book with pages, and a 2D list as a shelf of books. More recently I've shifted toward small mini projects, exercises that build on each other and combine multiple concepts at once instead of testing ideas in isolation.",
+    "bullets": [
+      "Teach Python and Scratch constructs: control flow, iteration, functions, and data structures",
+      "Devise hands-on coding exercises to strengthen logical reasoning and problem decomposition",
+      "Emphasize debugging, code clarity, and structured problem solving"
+    ]
+  },
+  {
+    "company": "Yekola",
+    "location": "Toronto",
+    "role": "Frontend Developer",
+    "dates": "Oct 2023 - Oct 2024",
+    "status": "Ended",
+    "volunteer": true,
+    "tech": ["React Native", "Redux", "UML", "JavaScript", "Agile", "Team Leadership"],
+    "description": "Yekola was an early stage EdTech startup building a language learning platform. I joined as a volunteer frontend developer and ended up leading a team of 4 other frontend devs. One of the first real technical calls I made was pushing for React Native. The app didn't have many native specific features at the time, so cross platform made more sense than building separately for iOS and Android. I also weighed in on how the app's flow should work, trying to keep features grounded instead of letting scope creep in. Leading the team was a mix of staying hands on with code and making sure the other 4 devs, genuinely sharp people, some still in or just out of high school, had what they needed. That meant assigning tasks, checking in on blockers, and reviewing their code alongside my own. This was my first real leadership experience. I'll be honest, I was still a junior developer myself at the time, and looking back there's a lot I'd do differently now. But it taught me more about leading a team than almost anything since.",
+    "bullets": [
+      "Led 4 frontend devs at an early-stage EdTech startup building a language learning platform",
+      "Spearheaded early technical decisions on stack and architecture",
+      "Collaborated in Agile sprints to define features, review code, and align UI with product goals",
+      "Designed app flow and UX with UML, then built the mobile frontend using React-Native and Redux"
+    ]
+  },
+  {
+    "company": "NLEats",
+    "location": "St. John's",
+    "role": "Frontend Developer",
+    "dates": "May 2020 - Dec 2020",
+    "status": "Ended",
+    "volunteer": true,
+    "tech": ["React.js", "JavaScript", "Responsive Design", "Agile", "Mentorship"],
+    "description": "NLEats was a food bank initiative that started up during COVID, organizing grocery runs and food access for the community. I joined as a volunteer developer, working on the org's web interfaces with React.js. Part of my role was mentoring 3 new hires and volunteers who were new to React and JavaScript. Along with the rest of the team, I pointed them toward learning resources, gave feedback as they picked things up, and reviewed their code as they got more comfortable with the stack. It was as much about helping people get their footing as it was about shipping features.",
+    "bullets": [
+      "Mentored 3 new hires and volunteers on project's tech stack and provided resources",
+      "Developed and tested responsive web interfaces using React.js, ensuring clean component design",
+      "Participated in sprint planning, code reviews, and backlog refinement within an Agile team"
+    ]
+  }
+]
