@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import data from '../content/experience.json'
+import { positions } from './experienceData'
 
 export default function Experience() {
-  const { positions } = data
   const [selected, setSelected] = useState(0)
   const active = positions[selected]
 
