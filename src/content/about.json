@@ -7,56 +7,52 @@
   "_photos": "Drop image files in public/assets/avatars/ and point `photo` at them, e.g. \"/assets/avatars/me.jpg\" (leading slash, no `public` in the path). Any entry left empty falls back to a generated pixel-art placeholder.",
 
   "photo": "",
-  "mood": "Focused  :-)",
+  "mood": "Debugging  :-/",
 
   "stats": [
     { "label": "Views", "value": "1,337" },
-    { "label": "Profile Type", "value": "Software Engineer" },
-    { "label": "Location", "value": "City, Country" },
+    { "label": "Profile Type", "value": "Software Developer" },
+    { "label": "Location", "value": "Ontario, Canada" },
     { "label": "Last Login", "value": "Today" },
-    { "label": "Member Since", "value": "8/15/2003" }
+    { "label": "Member Since", "value": "9/1/2025" }
   ],
 
   "blurbs": {
-    "aboutMe": "Hey! I'm a software engineer who likes building things that feel good to use — the kind of small details most people never notice but would miss immediately if they were gone. Mostly full-stack web work these days. I care about clean interfaces, fast feedback loops, and code the next person can actually read.\n\nWhen I'm not shipping, I'm usually taking something apart to see how it works, or losing an evening to a rabbit hole about interface design history. This site is one of those rabbit holes.",
-    "whoIdLikeToMeet": "Engineers and designers who sweat the details. People building weird, delightful things on the web that don't look like everything else. Teams that care about craft and ship anyway.\n\nAlso: anyone who still remembers what it felt like to customize a profile page with hand-written CSS at 2am."
+    "aboutMe": "Hey, I'm Fady. I'm a frontend-leaning developer currently doing my Master's in Applied Computing at the University of Windsor, after a B.Sc. in Computer Science from Memorial University of Newfoundland. Most of my work has been React and React Native, but grad school has been pulling me further into fullstack and systems territory.\n\nCode is a big part of what I do, but it's not the whole story. I like meeting new people, I'll take any excuse to travel, and most of my free time goes to things that have nothing to do with a keyboard: board games, cooking, worldbuilding projects that live entirely in my notes app, and hopefully guitar someday soon.\n\nThis site is one of those side projects that got a little out of hand. I could have made a normal portfolio, but I got attached to the idea of building it as a fake operating system instead.",
+    "whoIdLikeToMeet": "People from anywhere, doing anything, honestly. I like hearing how other people ended up where they are. Other developers who take their side projects a little too seriously. Anyone up for a board game that takes way longer to explain than to play."
   },
 
   "interests": [
     {
       "label": "General",
-      "value": "Cooking badly and eating well. Long walks with a podcast on. Board games with too many rules. Taking photos of buildings nobody else finds interesting."
+      "value": "Board games, especially ones with too many rules. Cooking, mostly by feel rather than recipe. Worldbuilding projects that never see daylight. Traveling whenever I get the chance."
     },
-    {
+    { 
       "label": "Music",
-      "value": "Whatever's loud enough to drown out an open-plan office. Currently on a heavy 2000s indie kick I'm not apologising for."
+      "value": "Classic rock, heavy on Pink Floyd and David Gilmour specifically. Hoping to actually learn guitar one of these days, with Shine On You Crazy Diamond as the goal. Also a big fan of video game and movie soundtracks, especially as background for focused work."
     },
     {
       "label": "Movies",
-      "value": "Sci-fi with practical effects, heist films, and anything where the production design is doing more work than the plot."
-    },
-    {
-      "label": "Television",
-      "value": "Documentaries about things I'll never do — deep sea salvage, competitive baking, restoring old arcade cabinets."
+      "value": "Forrest Gump, Finding Nemo, Spider-Man: Into the Spider-Verse, and The Martian. Not exactly a consistent genre, but they're the ones I'll always rewatch."
     },
     {
       "label": "Books",
-      "value": "Non-fiction about how things got made. Design history, engineering disasters, and the occasional novel I'll take three months to finish."
+      "value": "An eclectic pile spanning fantasy, sci-fi, literary fiction, theology, and philosophy, tracked a little too meticulously in a Notion database."
     },
     {
       "label": "Heroes",
-      "value": "Anyone who documents their work properly. My grandmother. The person who first decided software should have an undo button."
+      "value": "The friends and family who got me here. I wouldn't be anywhere close to where I am without them."
     }
   ],
 
   "friends": [
     { "name": "Tom", "variant": "tom", "caption": "Your first friend", "photo": "" },
-    { "name": "Gill Bates", "caption": "Redmond, WA", "photo": "" },
-    { "name": "Zark Muckerberg", "caption": "The Facebook", "photo": "" },
-    { "name": "Linos Torvalds", "caption": "Just a hobby", "photo": "" },
-    { "name": "Steve Jerbs", "caption": "One more thing", "photo": "" },
-    { "name": "Elon Tusk", "caption": "Occupy Mars", "photo": "" },
-    { "name": "Jeff Bozos", "caption": "Prime member", "photo": "" },
-    { "name": "Ada Loveless", "caption": "First programmer", "photo": "" }
+    { "name": "Gill Bates", "variant": "gates", "caption": "Redmond, WA", "photo": "" },
+    { "name": "Zark Muckerberg", "variant": "zuckerberg", "caption": "The Facebook", "photo": "" },
+    { "name": "Linos Torvalds", "variant": "torvalds", "caption": "Just a hobby", "photo": "" },
+    { "name": "Steve Jerbs", "variant": "jobs", "caption": "One more thing", "photo": "" },
+    { "name": "Elon Tusk", "variant": "musk", "caption": "Occupy Mars", "photo": "" },
+    { "name": "Jeff Bozos", "variant": "bezos", "caption": "Prime member", "photo": "" },
+    { "name": "Ada Loveless", "variant": "lovelace", "caption": "First programmer", "photo": "" }
   ]
 }

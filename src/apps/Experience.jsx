@@ -42,6 +42,9 @@ export default function Experience() {
               .filter(Boolean)
               .join(' · ')}
           </p>
+          {active.description && (
+            <p className="tm-description">{active.description}</p>
+          )}
           {active.bullets?.length > 0 && (
             <ul className="bullets">
               {active.bullets.map((b) => (

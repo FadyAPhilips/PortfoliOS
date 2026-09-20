@@ -132,7 +132,9 @@
    the ceiling stops it squeezing the list out of a short window. */
 .tm-detail {
   min-height: 148px;
-  max-height: 55%;
+  /* The list holds only a handful of rows, so the notes pane — which carries
+     a paragraph as well as the bullets — takes the larger share. */
+  max-height: 65%;
   padding: 8px 10px;
   overflow: auto;
 }
@@ -144,6 +146,21 @@
 
 .tm-detail .bullets li {
   margin-bottom: 5px;
+}
+
+/* The role's narrative, above its resume bullets. Looser than the bullets
+   because it's a paragraph of prose, not a scannable list. */
+.tm-description {
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
+/* Divider between the prose and the bullets. Scoped past
+   `.tm-detail .bullets`, which sets margin-top at equal specificity. */
+.tm-detail .tm-description + .bullets {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--button-shadow);
 }
 
 fieldset {
