@@ -1,47 +1,84 @@
 {
   "projects": [
     {
-      "slug": "project-one",
-      "name": "Project One",
+      "slug": "neutron",
+      "name": "Neutron — React Game Engine",
       "description": [
-        "Project One",
-        "===========",
+        "Neutron",
+        "=======",
         "",
-        "One or two sentences on what it does and why you built it.",
+        "A from-scratch 2D game engine built in React, with a Bomberman clone running on top of it as a proof of concept. Movement, collisions, bomb placement, and explosions are all driven by a custom Entity-Component-System architecture, with Redux acting as the game world's state store and React's render cycle doubling as the renderer.",
         "",
-        "Built with: React, Node.js, PostgreSQL"
+        "The interesting part isn't \"I made Bomberman\" — it's implementing ECS inside Redux and driving it with a fixed-timestep loop, rendering entities as absolutely-positioned DOM nodes with CSS sprite-sheet animation instead of canvas or WebGL.",
+        "",
+        "Built with: React, Redux Toolkit, styled-components"
       ],
       "screenshots": [
-        "/assets/projects/project-one/screenshot-1.jpg",
-        "/assets/projects/project-one/screenshot-2.jpg"
+        "/assets/projects/neutron/screenshot-1.jpg",
+        "/assets/projects/neutron/screenshot-2.jpg"
       ],
-      "video": "",
-      "url": "https://example.com"
-    },
-    {
-      "slug": "project-two",
-      "name": "Project Two",
-      "description": [
-        "Project Two",
-        "===========",
-        "",
-        "One or two sentences on what it does and why you built it."
-      ],
-      "screenshots": ["/assets/projects/project-two/screenshot-1.jpg"],
       "video": "",
       "url": ""
     },
     {
-      "slug": "project-three",
-      "name": "Project Three",
+      "slug": "gymtheory",
+      "name": "GymTheory",
       "description": [
-        "Project Three",
-        "=============",
+        "GymTheory",
+        "=========",
         "",
-        "One or two sentences on what it does and why you built it."
+        "A mobile workout-logging app built with React Native and Expo. Pick a date, search a large exercise catalogue with animated form GIFs, and log up to five sets of reps and weight per exercise — all backed by a serverless AWS stack (API Gateway, Lambda, DynamoDB) with no login required, since identity is tied to an anonymous device install.",
+        "",
+        "Shipped as a signed Android app bundle and set up for Google Play submission, with EAS Build and EAS Update handling native builds and over-the-air updates.",
+        "",
+        "Built with: React Native, Expo, Redux Toolkit, AWS Lambda, AWS DynamoDB"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "/assets/projects/gymtheory/screenshot-1.jpg",
+        "/assets/projects/gymtheory/screenshot-2.jpg",
+        "/assets/projects/gymtheory/screenshot-3.jpg"
+      ],
       "video": "",
+      "url": ""
+    },
+    {
+      "slug": "my-flix",
+      "name": "My-Flix: V2",
+      "description": [
+        "My-Flix: V2",
+        "===========",
+        "",
+        "A Netflix-style movie discovery and watchlist web app, built as a team of three. Browse an infinite-scrolling grid of movies, filter by genre and watched status, save titles to your own list, and get AI-powered movie suggestions from a free-text prompt via a ChatGPT-backed recommendation feature.",
+        "",
+        "The backend runs on AWS Amplify Gen 2 (AppSync GraphQL, DynamoDB, Cognito, and a few custom Lambda resolvers for batched operations), migrated from an earlier MERN stack to cut infrastructure costs by 90%. I led the UI work — responsiveness, filters, modals, and the login/signup flow — while teammates owned the data layer and the AI recommendation feature.",
+        "",
+        "Built with: React, TypeScript, AWS Amplify, AWS Lambda, Ant Design"
+      ],
+      "screenshots": [
+        "/assets/projects/my-flix/screenshot-1.jpg",
+        "/assets/projects/my-flix/screenshot-2.jpg"
+      ],
+      "video": "",
+      "url": ""
+    },
+    {
+      "slug": "autonomous-rc-car",
+      "name": "Autonomous 4WD Raspberry Pi Smart Car",
+      "description": [
+        "Autonomous 4WD Raspberry Pi Smart Car",
+        "======================================",
+        "",
+        "A distributed teleoperation and autonomous navigation system for a mecanum-wheel robot car on a Raspberry Pi 5, built as a team project for grad school. An overhead webcam gives the car drift-free global positioning through a perspective transform, MQTT carries commands and telemetry between a laptop and the Pi, and a PID-driven navigation system sends the car to clicked waypoints or chases colour-detected cups in real time.",
+        "",
+        "I architected the real-time MQTT communications backend and the OpenCV overhead-camera tracking pipeline, and implemented the waypoint navigation with obstacle avoidance and stuck recovery. The project won Best Overall Graduate Demo at the University of Windsor's Winter 2026 CS Demo Day.",
+        "",
+        "Built with: Python, Raspberry Pi, MQTT, OpenCV, pygame"
+      ],
+      "screenshots": [
+        "/assets/projects/autonomous-rc-car/screenshot-1.jpg",
+        "/assets/projects/autonomous-rc-car/screenshot-2.jpg"
+      ],
+      "video": "/assets/projects/autonomous-rc-car/demo.mp4",
       "url": ""
     }
   ]
