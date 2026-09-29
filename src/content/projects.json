@@ -126,6 +126,31 @@
       "links": [
         { "label": "GitHub", "href": "https://github.com/FadyAPhilips/OI_Hackathon" }
       ]
+    },
+    {
+      "slug": "lancerfit",
+      "name": "LancerFit — Gamified Fitness Platform",
+      "description": [
+        "LancerFit",
+        "=========",
+        "",
+        "A gamified fitness platform built for the University of Windsor's Toldo Lancer Centre, addressing a familiar campus-recreation problem: high enrolment at the start of a term, steady attrition through it. Students log activity, clear daily quests, advance a five-tier avatar bound to their faculty, join staff-run challenges, and compete on faculty and campus leaderboards — while Campus Recreation staff administer everything students see through a dedicated web console, including a validation queue where supervised results are approved before they hit a public leaderboard.",
+        "",
+        "The system is three repositories sharing one contract: a Node/Express/TypeScript backend over PostgreSQL with Socket.IO for live updates, a React Native/Expo student app, and a React/TypeScript admin console. I led UI/UX design and prototyping in Figma, taking wireframes through stakeholder approval to a working HTML prototype, and designed and built the badge engine end-to-end across five rule families with automated evaluation. I also contributed to mobile screens and ran the end-to-end testing pass, using Claude Code throughout while treating generated output as a proposal requiring review rather than a result.",
+        "",
+        "Built with: React Native, Expo, TypeScript, Node.js, PostgreSQL, Docker, Claude Code"
+      ],
+      "screenshots": [
+        "/assets/projects/lancerfit/admin_daily_quests.png",
+        "/assets/projects/lancerfit/admin_View.png",
+        "/assets/projects/lancerfit/challenge_screen.png",
+        "/assets/projects/lancerfit/leaderboard_screen.png",
+        "/assets/projects/lancerfit/leaderboard_screen.png",
+        "/assets/projects/lancerfit/student_home_screen.png"
+      ],
+      "docs": [],
+      "videos": ["/assets/projects/lancerfit/lancer-fit-walkthrough.mp4"],
+      "links": []
     }
   ]
 }

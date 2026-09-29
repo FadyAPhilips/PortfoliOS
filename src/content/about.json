@@ -8,14 +8,14 @@
 
   "photo": "",
   "variant": "me",
-  "mood": "Debugging  :-/",
+  "mood": "Cooking...  :)",
 
   "stats": [
     { "label": "Views", "value": "1,337" },
     { "label": "Profile Type", "value": "Software Developer" },
     { "label": "Location", "value": "Ontario, Canada" },
     { "label": "Last Login", "value": "Today" },
-    { "label": "Member Since", "value": "9/1/2025" }
+    { "label": "Member Since", "value": "6/21/2018" }
   ],
 
   "blurbs": {
