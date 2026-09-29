@@ -15,8 +15,9 @@ function Blurb({ heading, body }) {
 }
 
 export default function About() {
-  const { name, role, mood, photo, stats, interests, blurbs, friends, profileUrl } =
-    about
+  const {
+    name, role, mood, photo, variant, stats, interests, blurbs, friends, profileUrl,
+  } = about
 
   return (
     <div className="ms">
@@ -39,7 +40,7 @@ export default function About() {
               <h2 className="ms-name">{name}</h2>
 
               <div className="ms-avatar-frame">
-                <Avatar name={name} photo={photo} size={150} />
+                <Avatar name={name} photo={photo} variant={variant} size={150} />
               </div>
 
               <div className="ms-network">

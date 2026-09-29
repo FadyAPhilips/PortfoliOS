@@ -7,6 +7,7 @@
   "_photos": "Drop image files in public/assets/avatars/ and point `photo` at them, e.g. \"/assets/avatars/me.jpg\" (leading slash, no `public` in the path). Any entry left empty falls back to a generated pixel-art placeholder.",
 
   "photo": "",
+  "variant": "me",
   "mood": "Debugging  :-/",
 
   "stats": [

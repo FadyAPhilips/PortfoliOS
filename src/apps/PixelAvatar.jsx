@@ -1,4 +1,4 @@
-import { GRID, ROLES, faceFor } from './avatarFaces'
+import { ROLES, faceFor } from './avatarFaces'
 
 /**
  * Deterministic 32x32 pixel-art headshot.
@@ -31,19 +31,21 @@ function runs(map) {
 }
 
 export default function PixelAvatar({ name, variant, size = 76, className = '' }) {
-  const { map, colors } = faceFor(name, variant)
+  // `grid` comes from the map's own height, so a 64x64 face needs no other
+  // change to render at the same on-screen size as a 32x32 one.
+  const { map, grid, colors } = faceFor(name, variant)
 
   return (
     <svg
       className={`pixel-avatar ${className}`}
       width={size}
       height={size}
-      viewBox={`0 0 ${GRID} ${GRID}`}
+      viewBox={`0 0 ${grid} ${grid}`}
       shapeRendering="crispEdges"
       role="img"
       aria-label={`${name} profile picture`}
     >
-      <rect width={GRID} height={GRID} fill={colors.bg} />
+      <rect width={grid} height={grid} fill={colors.bg} />
       {runs(map).map((r) => (
         <rect
           key={`${r.x}-${r.y}`}
