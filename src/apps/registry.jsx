@@ -1,3 +1,4 @@
+import Welcome from './Welcome'
 import About from './About'
 import Projects from './Projects'
 import Experience from './Experience'
@@ -22,6 +23,14 @@ import MediaPlayer from './MediaPlayer'
  * reopening swaps the payload into the existing window.
  */
 export const APPS = {
+  welcome: {
+    // Windows 98's own first-boot screen, down to the title.
+    title: 'Welcome',
+    icon: 'icon-welcome',
+    // Contents list plus a page that holds four short paragraphs unscrolled.
+    defaultSize: { w: 560, h: 400 },
+    Component: Welcome,
+  },
   about: {
     title: 'About Me',
     icon: 'icon-about',
@@ -109,6 +118,7 @@ export const APPS = {
 
 // Order shown on the desktop and in the Start menu.
 export const APP_ORDER = [
+  'welcome',
   'about',
   'projects',
   'experience',
@@ -117,3 +127,6 @@ export const APP_ORDER = [
   'resume',
   'solitaire',
 ]
+
+// Opened when the page loads, in this order; the last one ends up focused.
+export const STARTUP_APPS = ['welcome']

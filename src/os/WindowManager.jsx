@@ -1,7 +1,11 @@
 import { createContext, useContext, useMemo, useReducer } from 'react'
-import { actions, initialState, windowReducer } from './windowReducer'
+import { actions, initialState, openStartup, windowReducer } from './windowReducer'
 import { useDesktopSize } from './useDesktopSize'
-import { APPS } from '../apps/registry'
+import { APPS, STARTUP_APPS } from '../apps/registry'
+
+// Lazy initializer: the desktop boots with its startup programs already open.
+const boot = (state) =>
+  openStartup(state, STARTUP_APPS.map((appId) => [appId, APPS[appId]]))
 
 // Split so components that only ever dispatch (icons, menu items) don't
 // re-render when window state changes. `dispatch` is referentially stable.
@@ -10,7 +14,7 @@ const WindowActionsContext = createContext(null)
 const DesktopSizeContext = createContext(null)
 
 export function WindowManagerProvider({ children }) {
-  const [state, dispatch] = useReducer(windowReducer, initialState)
+  const [state, dispatch] = useReducer(windowReducer, initialState, boot)
   const desktop = useDesktopSize()
 
   // Bound once — every consumer gets the same function identities.

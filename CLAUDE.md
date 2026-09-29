@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — run ESLint over the project (flat config in `eslint.config.js`)
 - `npm test` — run vitest once
 
-`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js`, `src/apps/projectFiles.js`, `src/apps/loadTextFile.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
+`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js` (including `openStartup`), `src/apps/projectFiles.js`, `src/apps/loadTextFile.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
 
 ## Architecture
 
@@ -33,6 +33,14 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 - **Gestures write to the DOM directly and dispatch only on `pointerup`.** Committing to state per `pointermove` re-renders at pointer frequency. Preserve this.
 - **Maximized and compact (<768px) windows derive their rect from the live desktop size at render time**, never from stored state, so they keep filling the viewport on resize while the floating rect survives for restore.
 - `src/os/constants.js` holds shared measurements (`MIN_W`, `TASKBAR_H`, z-index layers). CSS and gesture math both depend on these agreeing.
+
+### Welcome program
+
+`src/apps/Welcome.jsx` is modelled on Windows 98's "Welcome to Windows" screen: a black banner, a Contents list on the left, the chosen topic on the right, Close in the corner. It is first in `APP_ORDER` and opens on page load.
+
+- **Startup programs are `STARTUP_APPS` in `registry.jsx`.** `WindowManager` passes a lazy initializer to `useReducer` that runs `openStartup` (in `windowReducer.js`) over them, so the desktop boots with the window already open — no effect, no empty-desktop frame, and StrictMode's double-invoked initializer can't open two.
+- All copy is in `src/content/welcome.json` as `topics`, each `{ title, icon, body[], open? }`. `{owner}` and `{brand}` are filled from `site.json`. `open` is an app id that gets an Open button; an id missing from `APPS` just gets no button rather than crashing `openApp`.
+- Contents entries are `<button>`s with the usual 98.css unwind (in `welcome.css`). The stacked layout below 480px keys off a container query, like the About program.
 
 ### About program (MySpace profile)
 

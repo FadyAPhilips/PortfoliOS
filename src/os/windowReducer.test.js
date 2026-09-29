@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { actions, initialState, windowReducer } from './windowReducer'
+import { actions, initialState, openStartup, windowReducer } from './windowReducer'
 
 // Registry stand-ins. The reducer never sees the registry itself; the action
 // creator copies what it needs off the entry.
@@ -137,5 +137,27 @@ describe('UPDATE_WINDOW', () => {
     const state = open(initialState, 'photos', photos)
     const next = windowReducer(state, actions.update(12345, { title: 'x' }))
     expect(next).toBe(state)
+  })
+})
+
+describe('openStartup', () => {
+  const welcome = { title: 'Welcome', defaultSize: { w: 400, h: 300 } }
+
+  it('opens each startup app, focused and on top', () => {
+    const state = openStartup(initialState, [['welcome', welcome]])
+    const win = only(state)
+    expect(win.appId).toBe('welcome')
+    expect(win.minimized).toBe(false)
+    expect(state.focusedId).toBe(win.id)
+  })
+
+  it('leaves the state alone when there is nothing to open', () => {
+    expect(openStartup(initialState, [])).toBe(initialState)
+  })
+
+  it('never doubles a single-instance app when run twice', () => {
+    // StrictMode calls a reducer initializer twice in development.
+    const once = openStartup(initialState, [['welcome', welcome]])
+    only(openStartup(once, [['welcome', welcome]]))
   })
 })

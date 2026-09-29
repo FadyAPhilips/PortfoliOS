@@ -1,0 +1,48 @@
+{
+  "_note": "Copy for the Welcome screen that opens on startup. {owner} and {brand} are filled in from site.json. Each topic is one entry in the Contents list: `icon` must be a symbol id in public/icons.svg, `body` is a list of paragraphs, and `open` (optional) is an app id from registry.jsx that gets an Open button. The first topic is shown when the window opens.",
+
+  "topics": [
+    {
+      "title": "What is {brand}?",
+      "icon": "icon-logo",
+      "body": [
+        "{brand} is {owner}'s portfolio, built to look and work like a Windows 98 / ME desktop.",
+        "Each part of the portfolio is a program. Open one and it runs in its own window, the way it would have on a PC at the turn of the millennium.",
+        "Pick a topic on the left for a quick tour, or close this window and start exploring."
+      ],
+      "open": "about"
+    },
+    {
+      "title": "Opening Programs",
+      "icon": "icon-projects",
+      "body": [
+        "Double-click an icon on the desktop to open that program. You can also click an icon once and press Enter.",
+        "Or click the Start button in the bottom-left corner and choose a program from the menu.",
+        "Every open program gets a button on the taskbar along the bottom of the screen."
+      ]
+    },
+    {
+      "title": "Working with Windows",
+      "icon": "icon-welcome",
+      "body": [
+        "Drag a window by its title bar to move it. Drag any edge or corner to resize it.",
+        "The three buttons at the top right of a window minimize, maximize and close it. Double-clicking the title bar maximizes it too.",
+        "Click a window to bring it to the front. Click its taskbar button to minimize it, and again to bring it back.",
+        "On a phone or a narrow screen, each window fills the screen instead."
+      ]
+    },
+    {
+      "title": "What's on the Desktop",
+      "icon": "icon-about",
+      "body": [
+        "About Me: a profile page, styled after an early MySpace profile.",
+        "My Projects: a folder for each project. Double-click a file to open it in Notepad, Photos or Media Player.",
+        "Experience: past roles. Click a row to see the details.",
+        "Skills: a Device Manager style list. Click a skill to open its properties.",
+        "Contact Me: write a message and click Send. It really is delivered.",
+        "resume.exe: run the setup wizard to download the resume.",
+        "Solitaire: the classic card game, for a break."
+      ]
+    }
+  ]
+}

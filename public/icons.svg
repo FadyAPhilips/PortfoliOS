@@ -69,6 +69,18 @@
     <path d="M17 17.5l12-1v13l-12-3z" fill="#ffd020"/>
   </symbol>
 
+  <!-- Welcome: a CRT showing the Start flag, as on first boot. -->
+  <symbol id="icon-welcome" viewBox="0 0 32 32" shape-rendering="crispEdges">
+    <rect x="3" y="3" width="26" height="20" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+    <rect x="6" y="6" width="20" height="14" fill="#000080"/>
+    <path d="M10 9h5v4h-5z" fill="#d00000"/>
+    <path d="M17 9h5v4h-5z" fill="#00a000"/>
+    <path d="M10 14h5v4h-5z" fill="#0a5fc0"/>
+    <path d="M17 14h5v4h-5z" fill="#ffd020"/>
+    <rect x="12" y="24" width="8" height="3" fill="#808080"/>
+    <rect x="7" y="27" width="18" height="3" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+  </symbol>
+
   <!-- resume.exe: a document with a download arrow. -->
   <symbol id="icon-resume" viewBox="0 0 32 32" shape-rendering="crispEdges">
     <path d="M5 2h13l6 6v22H5z" fill="#fff" stroke="#000" stroke-width="1"/>

@@ -183,3 +183,13 @@ export function windowReducer(state, action) {
       return state
   }
 }
+
+// Opens `entries` ([appId, registryEntry] pairs) onto `state`, in order, so
+// the last one ends up focused. Used as the useReducer initializer so the
+// desktop boots with its startup programs already open — no effect, and so
+// no frame of empty desktop first.
+export const openStartup = (state, entries) =>
+  entries.reduce(
+    (s, [appId, app]) => windowReducer(s, actions.openApp(appId, app)),
+    state,
+  )

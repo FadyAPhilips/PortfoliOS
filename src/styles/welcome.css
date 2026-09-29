@@ -1,0 +1,161 @@
+/* Welcome — Windows 98's "Welcome to Windows" first-boot screen. */
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 3px;
+  /* Windows are resized independently of the viewport, so the stacked
+     layout keys off the window's own width. */
+  container-type: inline-size;
+}
+
+/* The black title band, big light "Welcome" with the product name after. */
+.welcome-banner {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 16px 12px;
+  background: linear-gradient(90deg, #000 0%, #000 55%, var(--dialog-blue) 100%);
+  color: var(--button-highlight);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcome-word {
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+}
+
+.welcome-to {
+  font-size: 16px;
+}
+
+.welcome-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  background: var(--button-highlight);
+  box-shadow: inset -1px -1px var(--button-highlight),
+    inset 1px 1px var(--button-shadow);
+}
+
+/* --- Contents list ----------------------------------------------------- */
+
+.welcome-contents {
+  flex: 0 0 190px;
+  padding: 12px 8px;
+  background: var(--surface);
+  border-right: 1px solid var(--button-shadow);
+  overflow: auto;
+}
+
+.welcome-contents h3 {
+  margin: 0 0 8px 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--button-shadow);
+}
+
+.welcome-contents ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Contents entries are <button>s, so 98.css's global button styling is
+   unwound here: bevel, minimums, padding, and its transparent-text trick. */
+.welcome-contents button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 0 4px;
+  padding: 4px 6px;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--text-color);
+  text-shadow: none;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+.welcome-contents button:hover span {
+  color: var(--dialog-blue);
+  text-decoration: underline;
+}
+
+.welcome-contents button.is-selected {
+  background: var(--selection-blue);
+}
+
+.welcome-contents button.is-selected span {
+  color: var(--button-highlight);
+  text-decoration: none;
+}
+
+.welcome-contents button:focus-visible {
+  outline: 1px dotted var(--window-frame);
+  outline-offset: -2px;
+}
+
+.welcome-contents svg {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Topic page -------------------------------------------------------- */
+
+.welcome-page {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 14px 18px;
+  overflow: auto;
+}
+
+.welcome-page h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--dialog-blue);
+}
+
+.welcome-page p {
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.welcome-page button {
+  margin-top: 4px;
+}
+
+/* Close sits alone in the bottom-right, under the groove. */
+.welcome-actions {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+/* Narrow windows: the Contents list becomes a strip above the page. */
+@container (max-width: 480px) {
+  .welcome-main {
+    flex-direction: column;
+  }
+
+  .welcome-contents {
+    flex: 0 0 auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--button-shadow);
+  }
+
+  .welcome-word {
+    font-size: 22px;
+  }
+}
