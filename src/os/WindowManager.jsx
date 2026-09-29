@@ -3,10 +3,6 @@ import { actions, initialState, openStartup, windowReducer } from './windowReduc
 import { useDesktopSize } from './useDesktopSize'
 import { APPS, STARTUP_APPS } from '../apps/registry'
 
-// Lazy initializer: the desktop boots with its startup programs already open.
-const boot = (state) =>
-  openStartup(state, STARTUP_APPS.map((appId) => [appId, APPS[appId]]))
-
 // Split so components that only ever dispatch (icons, menu items) don't
 // re-render when window state changes. `dispatch` is referentially stable.
 const WindowStateContext = createContext(null)
@@ -14,8 +10,12 @@ const WindowActionsContext = createContext(null)
 const DesktopSizeContext = createContext(null)
 
 export function WindowManagerProvider({ children }) {
-  const [state, dispatch] = useReducer(windowReducer, initialState, boot)
+  // Read first: the lazy initializer below centres the startup programs on it.
   const desktop = useDesktopSize()
+  // The desktop boots with its startup programs already open.
+  const [state, dispatch] = useReducer(windowReducer, initialState, (s) =>
+    openStartup(s, STARTUP_APPS.map((appId) => [appId, APPS[appId]]), desktop),
+  )
 
   // Bound once — every consumer gets the same function identities.
   const api = useMemo(

@@ -14,15 +14,17 @@
         "Built with: React, Redux Toolkit, styled-components"
       ],
       "screenshots": [
-        "/assets/projects/neutron/SS1.png",
-        "/assets/projects/neutron/SS2.png",
-        "/assets/projects/neutron/SS3.png",
-        "/assets/projects/neutron/SS4.png",
-        "/assets/projects/neutron/SS5.png"
+        "/assets/projects/neutron/SS1-Game.png",
+        "/assets/projects/neutron/SS2-Game_with_DevTools.png",
+        "/assets/projects/neutron/SS3-GameGrid.png",
+        "/assets/projects/neutron/SS4-Bomb.png",
+        "/assets/projects/neutron/SS5-Explosion.png"
       ],
       "docs": [],
-      "videos": ["/assets/projects/neutron/SR.mp4"],
-      "links": []
+      "videos": ["/assets/projects/neutron/demo.mp4"],
+      "links": [
+        { "label": "GitHub",    "href": "https://github.com/FadyAPhilips/bomberman-js" }
+      ]
     },
     {
       "slug": "gymtheory",
@@ -60,9 +62,9 @@
         "Built with: React, TypeScript, AWS Amplify, AWS Lambda, Ant Design"
       ],
       "screenshots": [
-        "/assets/projects/my-flix/screenshot-1.png",
-        "/assets/projects/my-flix/screenshot-2.png",
-        "/assets/projects/my-flix/screenshot-3.png"
+        "/assets/projects/my-flix/screenshot-1-Home.png",
+        "/assets/projects/my-flix/screenshot-2-Movie-Details.png",
+        "/assets/projects/my-flix/screenshot-3-AI-Suggestions.png"
       ],
       "docs": [],
       "videos": [],
@@ -85,15 +87,44 @@
         "Built with: Python, Raspberry Pi, MQTT, OpenCV, pygame"
       ],
       "screenshots": [
-        "/assets/projects/autonomous-rc-car/car.jpg",
-        "/assets/projects/autonomous-rc-car/PG1.jpeg",
-        "/assets/projects/autonomous-rc-car/SS1.png"
+        "/assets/projects/autonomous-rc-car/car_on_amazon.jpg",
+        "/assets/projects/autonomous-rc-car/photo_Demo.jpeg",
+        "/assets/projects/autonomous-rc-car/HSL_Mask.png"
       ],
       "docs": [],
-      "videos": ["/assets/projects/autonomous-rc-car/Vid1.mp4", "/assets/projects/autonomous-rc-car/Vid2.mp4"],
+      "videos": ["/assets/projects/autonomous-rc-car/Camera_Feeds.mp4", "/assets/projects/autonomous-rc-car/Running_Car_Vid.mp4"],
       "links": [
         { "label": "GitHub",    "href": "https://github.com/FadyAPhilips/RaspberryPI-fnk0043-Freenove" },
         { "label": "Car Kit on Amazon", "href": "https://a.co/d/07QbEUgp" }
+      ]
+    },
+    {
+      "slug": "arcadia",
+      "name": "Arcadia — Luxury SUV Infotainment System",
+      "description": [
+        "Arcadia",
+        "=======",
+        "",
+        "A high-fidelity infotainment system prototype built for the Ottawa Infotainment UI/UX Innovation Challenge, designed around a single question: what if driver attention, not feature count, was the primary design constraint? The system targets a luxury buyer who wants technology that recedes rather than demands — a circular, glass-inspired interface covering an animated instrument cluster, live MapKit navigation, a media player, and a combined home dashboard, unified by Apple's native Liquid Glass material system on iOS 26.",
+        "",
+        "Designed end-to-end in Figma before a line of code was written, then implemented natively in SwiftUI after an initial Unity plan turned out unable to reproduce the Liquid Glass material authentically. Demoed on a physical iPad in a simulated dual-screen vehicle configuration, with a sliding viewport standing in for a driver's gaze shifting between the cluster and the infotainment screen, three-finger swipe navigation, and a live MapKit route with camera-following and interpolated positioning.",
+        "",
+        "Placed 2nd in this challenge track at the Ottawa Infotainment UI/UX Innovation Challenge, and was selected as 1 of 15 participants across all teams for a week-long internship opportunity, continuing the design work in Figma.",
+        "",
+        "Built with: SwiftUI, MapKit, UIKit, Figma"
+      ],
+      "screenshots": [
+        "/assets/projects/arcadia/Cluster_Comfort.png",
+        "/assets/projects/arcadia/Cluster_Eco.jpg",
+        "/assets/projects/arcadia/Cluster_Turn.jpg",
+        "/assets/projects/arcadia/Infotainment_Main.png",
+        "/assets/projects/arcadia/Infotainment_Map.jpg",
+        "/assets/projects/arcadia/Infotainment_Media.jpg"
+      ],
+      "docs": [],
+      "videos": [],
+      "links": [
+        { "label": "GitHub", "href": "https://github.com/FadyAPhilips/OI_Hackathon" }
       ]
     }
   ]

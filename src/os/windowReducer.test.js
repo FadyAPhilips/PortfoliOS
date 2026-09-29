@@ -142,9 +142,10 @@ describe('UPDATE_WINDOW', () => {
 
 describe('openStartup', () => {
   const welcome = { title: 'Welcome', defaultSize: { w: 400, h: 300 } }
+  const desktop = { width: 1000, height: 700 }
 
   it('opens each startup app, focused and on top', () => {
-    const state = openStartup(initialState, [['welcome', welcome]])
+    const state = openStartup(initialState, [['welcome', welcome]], desktop)
     const win = only(state)
     expect(win.appId).toBe('welcome')
     expect(win.minimized).toBe(false)
@@ -152,12 +153,27 @@ describe('openStartup', () => {
   })
 
   it('leaves the state alone when there is nothing to open', () => {
-    expect(openStartup(initialState, [])).toBe(initialState)
+    expect(openStartup(initialState, [], desktop)).toBe(initialState)
   })
 
   it('never doubles a single-instance app when run twice', () => {
     // StrictMode calls a reducer initializer twice in development.
-    const once = openStartup(initialState, [['welcome', welcome]])
-    only(openStartup(once, [['welcome', welcome]]))
+    const once = openStartup(initialState, [['welcome', welcome]], desktop)
+    only(openStartup(once, [['welcome', welcome]], desktop))
+  })
+
+  it('centres each startup window on the desktop', () => {
+    const win = only(openStartup(initialState, [['welcome', welcome]], desktop))
+    expect(win.x).toBe(300)
+    expect(win.y).toBe(200)
+    expect(win.w).toBe(400)
+    expect(win.h).toBe(300)
+  })
+
+  it('pins a window larger than the desktop to the top-left corner', () => {
+    const tiny = { width: 300, height: 200 }
+    const win = only(openStartup(initialState, [['welcome', welcome]], tiny))
+    expect(win.x).toBe(0)
+    expect(win.y).toBe(0)
   })
 })

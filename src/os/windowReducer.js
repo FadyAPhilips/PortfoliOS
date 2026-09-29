@@ -185,11 +185,17 @@ export function windowReducer(state, action) {
 }
 
 // Opens `entries` ([appId, registryEntry] pairs) onto `state`, in order, so
-// the last one ends up focused. Used as the useReducer initializer so the
-// desktop boots with its startup programs already open — no effect, and so
-// no frame of empty desktop first.
-export const openStartup = (state, entries) =>
-  entries.reduce(
-    (s, [appId, app]) => windowReducer(s, actions.openApp(appId, app)),
-    state,
-  )
+// the last one ends up focused, each centred on `desktop` rather than
+// cascaded — the way Win98 put its Welcome screen in the middle on boot. A
+// window bigger than the desktop pins to the top-left so its title bar stays
+// reachable. Used as the useReducer initializer so the desktop boots with its
+// startup programs already open — no effect, and so no frame of empty
+// desktop first.
+export const openStartup = (state, entries, desktop) =>
+  entries.reduce((s, [appId, app]) => {
+    const next = windowReducer(s, actions.openApp(appId, app))
+    const { w, h } = app.defaultSize
+    const x = Math.max(0, Math.round((desktop.width - w) / 2))
+    const y = Math.max(0, Math.round((desktop.height - h) / 2))
+    return windowReducer(next, actions.setRect(next.focusedId, { x, y }))
+  }, state)

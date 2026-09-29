@@ -38,7 +38,7 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 
 `src/apps/Welcome.jsx` is modelled on Windows 98's "Welcome to Windows" screen: a black banner, a Contents list on the left, the chosen topic on the right, Close in the corner. It is first in `APP_ORDER` and opens on page load.
 
-- **Startup programs are `STARTUP_APPS` in `registry.jsx`.** `WindowManager` passes a lazy initializer to `useReducer` that runs `openStartup` (in `windowReducer.js`) over them, so the desktop boots with the window already open — no effect, no empty-desktop frame, and StrictMode's double-invoked initializer can't open two.
+- **Startup programs are `STARTUP_APPS` in `registry.jsx`.** `WindowManager` passes a lazy initializer to `useReducer` that runs `openStartup` (in `windowReducer.js`) over them, centred on the desktop rather than cascaded, so the desktop boots with the window already open — no effect, no empty-desktop frame, and StrictMode's double-invoked initializer can't open two.
 - All copy is in `src/content/welcome.json` as `topics`, each `{ title, icon, body[], open? }`. `{owner}` and `{brand}` are filled from `site.json`. `open` is an app id that gets an Open button; an id missing from `APPS` just gets no button rather than crashing `openApp`.
 - Contents entries are `<button>`s with the usual 98.css unwind (in `welcome.css`). The stacked layout below 480px keys off a container query, like the About program.
 
