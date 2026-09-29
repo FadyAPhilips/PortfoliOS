@@ -20,6 +20,7 @@
         "/assets/projects/neutron/SS4.png",
         "/assets/projects/neutron/SS5.png"
       ],
+      "docs": [],
       "videos": ["/assets/projects/neutron/SR.mp4"],
       "links": []
     },
@@ -39,6 +40,7 @@
       "screenshots": [
         "/assets/projects/gymtheory/gymTheoryScreenGroup.png"
       ],
+      "docs": [],
       "videos": [],
       "links": [
         { "label": "GitHub",    "href": "https://github.com/FadyAPhilips/GymTheory" }
@@ -62,6 +64,7 @@
         "/assets/projects/my-flix/screenshot-2.png",
         "/assets/projects/my-flix/screenshot-3.png"
       ],
+      "docs": [],
       "videos": [],
       "links": [
         { "label": "GitHub",    "href": "https://github.com/markarmanus/MyFlix" },
@@ -86,8 +89,12 @@
         "/assets/projects/autonomous-rc-car/PG1.jpeg",
         "/assets/projects/autonomous-rc-car/SS1.png"
       ],
+      "docs": [],
       "videos": ["/assets/projects/autonomous-rc-car/Vid1.mp4", "/assets/projects/autonomous-rc-car/Vid2.mp4"],
-      "links": []
+      "links": [
+        { "label": "GitHub",    "href": "https://github.com/FadyAPhilips/RaspberryPI-fnk0043-Freenove" },
+        { "label": "Car Kit on Amazon", "href": "https://a.co/d/07QbEUgp" }
+      ]
     }
   ]
 }

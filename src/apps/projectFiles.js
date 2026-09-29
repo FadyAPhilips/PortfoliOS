@@ -34,6 +34,11 @@ export function projectFiles(project) {
       text: (project.description ?? []).join('\n'),
     },
   ]
+  // Docs carry a src rather than inline text: they live on disk and are read
+  // when opened, unlike the README built from `description` above.
+  for (const src of project.docs ?? []) {
+    if (src) files.push({ name: basename(src), type: 'text', src })
+  }
   for (const src of project.screenshots ?? []) {
     if (src) files.push({ name: basename(src), type: 'image', src })
   }

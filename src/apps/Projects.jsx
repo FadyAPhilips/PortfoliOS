@@ -49,7 +49,8 @@ export default function Projects({ windowId }) {
           // while a different project's README gets its own.
           key: `${project.slug}/${file.name}`,
           title: `${file.name} - Notepad`,
-          payload: { name: file.name, text: file.text },
+          // The README carries its text; a doc carries the path Notepad reads.
+          payload: { name: file.name, text: file.text, src: file.src },
         })
         break
       case 'image': {

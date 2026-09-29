@@ -6,6 +6,7 @@ const base = {
   name: 'Demo',
   description: ['Demo', '====', '', 'A thing.'],
   screenshots: [],
+  docs: [],
   videos: [],
   links: [],
 }
@@ -29,6 +30,36 @@ describe('projectFiles', () => {
       { name: 'home.jpg', type: 'image', src: '/assets/projects/demo/home.jpg' },
       { name: 'settings.png', type: 'image', src: '/assets/projects/demo/settings.png' },
     ])
+  })
+
+  // A doc is read from disk when opened, so it carries a src instead of the
+  // inline text the README is built from.
+  it('yields one text file per doc, named by its basename and carrying its path', () => {
+    expect(projectFiles(base)).toHaveLength(1)
+    const files = projectFiles({
+      ...base,
+      docs: ['/assets/projects/demo/architecture.txt', '/assets/projects/demo/changelog.txt'],
+    })
+    expect(files.slice(1)).toEqual([
+      {
+        name: 'architecture.txt',
+        type: 'text',
+        src: '/assets/projects/demo/architecture.txt',
+      },
+      { name: 'changelog.txt', type: 'text', src: '/assets/projects/demo/changelog.txt' },
+    ])
+  })
+
+  it('skips a doc with no path', () => {
+    const files = projectFiles({ ...base, docs: ['', '/a/notes.txt'] })
+    expect(files.slice(1).map((f) => f.name)).toEqual(['notes.txt'])
+  })
+
+  it('numbers a doc that is itself named README.txt, leaving the derived one first', () => {
+    const files = projectFiles({ ...base, docs: ['/a/README.txt'] })
+    expect(files.map((f) => f.name)).toEqual(['README.txt', 'README (2).txt'])
+    expect(files[0].text).toBe('Demo\n====\n\nA thing.')
+    expect(files[1].src).toBe('/a/README.txt')
   })
 
   it('yields one video per entry, named by its basename', () => {
@@ -79,24 +110,26 @@ describe('projectFiles', () => {
     expect(files.at(-1).name).toBe('clip.mp4')
   })
 
-  it('orders files README, images, videos, links', () => {
+  it('orders files README, docs, images, videos, links', () => {
     const files = projectFiles({
       ...base,
       screenshots: ['/a/1.jpg', '/a/2.jpg'],
+      docs: ['/a/notes.txt'],
       videos: ['/a/v.mp4', '/a/w.mp4'],
       links: [
         { label: 'GitHub', href: 'https://x.y' },
         { label: 'Live', href: 'https://y.z' },
       ],
     })
-    expect(files.map((f) => f.type)).toEqual([
-      'text',
-      'image',
-      'image',
-      'video',
-      'video',
-      'link',
-      'link',
+    expect(files.map((f) => f.name)).toEqual([
+      'README.txt',
+      'notes.txt',
+      '1.jpg',
+      '2.jpg',
+      'v.mp4',
+      'w.mp4',
+      'GitHub.url',
+      'Live.url',
     ])
   })
 
