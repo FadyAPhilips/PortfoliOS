@@ -6,6 +6,26 @@
 // for externally hosted video ("clip.mp4?token=…").
 const basename = (path) => path.split(/[?#]/)[0].split('/').pop()
 
+// "shot.jpg" + 2 → "shot (2).jpg". The suffix goes before the extension so the
+// name still reads as a file of that type.
+const suffixed = (name, n) => {
+  const dot = name.lastIndexOf('.')
+  return dot < 1 ? `${name} (${n})` : `${name.slice(0, dot)} (${n})${name.slice(dot)}`
+}
+
+// Explorer keys both its icons and its selection by name, so two files sharing
+// one would collapse into a single selectable icon. Two screenshots can share a
+// basename across folders, and two links can share a label, so names are made
+// unique here rather than trusted from the JSON.
+const deduped = (files) => {
+  const seen = new Map()
+  return files.map((file) => {
+    const n = (seen.get(file.name) ?? 0) + 1
+    seen.set(file.name, n)
+    return n === 1 ? file : { ...file, name: suffixed(file.name, n) }
+  })
+}
+
 export function projectFiles(project) {
   const files = [
     {
@@ -15,13 +35,13 @@ export function projectFiles(project) {
     },
   ]
   for (const src of project.screenshots ?? []) {
-    files.push({ name: basename(src), type: 'image', src })
+    if (src) files.push({ name: basename(src), type: 'image', src })
   }
-  if (project.video) {
-    files.push({ name: basename(project.video), type: 'video', src: project.video })
+  for (const src of project.videos ?? []) {
+    if (src) files.push({ name: basename(src), type: 'video', src })
   }
-  if (project.url) {
-    files.push({ name: `${project.name}.url`, type: 'link', href: project.url })
+  for (const { label, href } of project.links ?? []) {
+    if (label && href) files.push({ name: `${label}.url`, type: 'link', href })
   }
-  return files
+  return deduped(files)
 }

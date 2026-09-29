@@ -14,11 +14,14 @@
         "Built with: React, Redux Toolkit, styled-components"
       ],
       "screenshots": [
-        "/assets/projects/neutron/screenshot-1.jpg",
-        "/assets/projects/neutron/screenshot-2.jpg"
+        "/assets/projects/neutron/SS1.png",
+        "/assets/projects/neutron/SS2.png",
+        "/assets/projects/neutron/SS3.png",
+        "/assets/projects/neutron/SS4.png",
+        "/assets/projects/neutron/SS5.png"
       ],
-      "video": "",
-      "url": ""
+      "videos": ["/assets/projects/neutron/SR.mp4"],
+      "links": []
     },
     {
       "slug": "gymtheory",
@@ -34,12 +37,12 @@
         "Built with: React Native, Expo, Redux Toolkit, AWS Lambda, AWS DynamoDB"
       ],
       "screenshots": [
-        "/assets/projects/gymtheory/screenshot-1.jpg",
-        "/assets/projects/gymtheory/screenshot-2.jpg",
-        "/assets/projects/gymtheory/screenshot-3.jpg"
+        "/assets/projects/gymtheory/gymTheoryScreenGroup.png"
       ],
-      "video": "",
-      "url": ""
+      "videos": [],
+      "links": [
+        { "label": "GitHub",    "href": "https://github.com/FadyAPhilips/GymTheory" }
+      ]
     },
     {
       "slug": "my-flix",
@@ -55,11 +58,15 @@
         "Built with: React, TypeScript, AWS Amplify, AWS Lambda, Ant Design"
       ],
       "screenshots": [
-        "/assets/projects/my-flix/screenshot-1.jpg",
-        "/assets/projects/my-flix/screenshot-2.jpg"
+        "/assets/projects/my-flix/screenshot-1.png",
+        "/assets/projects/my-flix/screenshot-2.png",
+        "/assets/projects/my-flix/screenshot-3.png"
       ],
-      "video": "",
-      "url": ""
+      "videos": [],
+      "links": [
+        { "label": "GitHub",    "href": "https://github.com/markarmanus/MyFlix" },
+        { "label": "Live Demo", "href": "https://main.d1pbor8ef5fg5y.amplifyapp.com/login/" }
+      ]
     },
     {
       "slug": "autonomous-rc-car",
@@ -75,11 +82,12 @@
         "Built with: Python, Raspberry Pi, MQTT, OpenCV, pygame"
       ],
       "screenshots": [
-        "/assets/projects/autonomous-rc-car/screenshot-1.jpg",
-        "/assets/projects/autonomous-rc-car/screenshot-2.jpg"
+        "/assets/projects/autonomous-rc-car/car.jpg",
+        "/assets/projects/autonomous-rc-car/PG1.jpeg",
+        "/assets/projects/autonomous-rc-car/SS1.png"
       ],
-      "video": "/assets/projects/autonomous-rc-car/demo.mp4",
-      "url": ""
+      "videos": ["/assets/projects/autonomous-rc-car/Vid1.mp4", "/assets/projects/autonomous-rc-car/Vid2.mp4"],
+      "links": []
     }
   ]
 }
