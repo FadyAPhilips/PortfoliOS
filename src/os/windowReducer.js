@@ -1,4 +1,5 @@
 import { CASCADE_ORIGIN, CASCADE_STEP, CASCADE_WRAP, Z } from './constants'
+import { fitAt, resolveSize } from './windowSize'
 
 export const initialState = {
   windows: [],
@@ -12,8 +13,9 @@ export const actions = {
   // `app` is the registry entry; the reducer stays ignorant of the registry.
   // `opts` hands a file to the window: `payload` is opaque to the reducer,
   // `title` overrides the registry title, and `key` identifies the instance
-  // for multiInstance apps (e.g. "yekola/README.txt").
-  openApp: (appId, app, opts = {}) => ({
+  // for multiInstance apps (e.g. "yekola/README.txt"). `desktop` is the live
+  // desktop size, which a share-of-the-screen `defaultSize` resolves against.
+  openApp: (appId, app, opts = {}, desktop) => ({
     type: 'OPEN_APP',
     appId,
     title: opts.title ?? app.title,
@@ -21,6 +23,7 @@ export const actions = {
     payload: opts.payload,
     key: opts.key,
     multiInstance: Boolean(app.multiInstance),
+    desktop,
   }),
   // Deliberately narrow: an app may retitle itself or swap its payload, but
   // never reach geometry or stacking.
@@ -61,7 +64,8 @@ const patch = (state, id, changes) => ({
 export function windowReducer(state, action) {
   switch (action.type) {
     case 'OPEN_APP': {
-      const { appId, title, defaultSize, payload, key, multiInstance } = action
+      const { appId, title, defaultSize, payload, key, multiInstance, desktop } =
+        action
 
       // Single instance per app is the default: reopening swaps the payload
       // into the existing window and raises it, so a viewer shows the new
@@ -80,6 +84,7 @@ export function windowReducer(state, action) {
       }
 
       const { x, y } = cascade(state.opened)
+      const { w, h } = fitAt(resolveSize(defaultSize, desktop), { x, y }, desktop)
       const win = {
         id: state.nextId,
         appId,
@@ -88,8 +93,8 @@ export function windowReducer(state, action) {
         key,
         x,
         y,
-        w: defaultSize.w,
-        h: defaultSize.h,
+        w,
+        h,
         z: state.nextZ,
         minimized: false,
         maximized: false,
@@ -186,16 +191,16 @@ export function windowReducer(state, action) {
 
 // Opens `entries` ([appId, registryEntry] pairs) onto `state`, in order, so
 // the last one ends up focused, each centred on `desktop` rather than
-// cascaded — the way Win98 put its Welcome screen in the middle on boot. A
-// window bigger than the desktop pins to the top-left so its title bar stays
-// reachable. Used as the useReducer initializer so the desktop boots with its
+// cascaded — the way Win98 put its Welcome screen in the middle on boot. The
+// size is resolved against the whole desktop, not the cascade slot, so
+// centring doesn't inherit the cascade's shrink-to-fit. Used as the useReducer initializer so the desktop boots with its
 // startup programs already open — no effect, and so no frame of empty
 // desktop first.
 export const openStartup = (state, entries, desktop) =>
   entries.reduce((s, [appId, app]) => {
-    const next = windowReducer(s, actions.openApp(appId, app))
-    const { w, h } = app.defaultSize
+    const next = windowReducer(s, actions.openApp(appId, app, {}, desktop))
+    const { w, h } = resolveSize(app.defaultSize, desktop)
     const x = Math.max(0, Math.round((desktop.width - w) / 2))
     const y = Math.max(0, Math.round((desktop.height - h) / 2))
-    return windowReducer(next, actions.setRect(next.focusedId, { x, y }))
+    return windowReducer(next, actions.setRect(next.focusedId, { x, y, w, h }))
   }, state)

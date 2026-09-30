@@ -18,6 +18,11 @@ import MediaPlayer from './MediaPlayer'
  *
  * `icon` is a symbol id in /public/icons.svg.
  *
+ * `defaultSize` is resolved when the window opens (see os/windowSize.js):
+ * `w` and `h` are pixels, or a share of the desktop when 1 or less, bounded
+ * by optional pixel `min` and `max`. A new window is shrunk to stay on the
+ * desktop either way.
+ *
  * `multiInstance: true` lets an app open one window per file (deduped on the
  * `key` passed to openApp); everything else is one window per app, and
  * reopening swaps the payload into the existing window.
@@ -43,7 +48,7 @@ export const APPS = {
     // The Explorer retitles itself to the open folder; this is the root.
     title: 'My Projects',
     icon: 'icon-projects',
-    defaultSize: { w: 560, h: 400 },
+    defaultSize: { w: 0.5, h: 0.6, min: { w: 560, h: 400 }, max: { w: 900, h: 700 } },
     Component: Projects,
   },
   experience: {
@@ -98,20 +103,21 @@ export const APPS = {
   notepad: {
     title: 'Notepad',
     icon: 'icon-notepad',
-    defaultSize: { w: 480, h: 360 },
+    defaultSize: { w: 0.45, h: 0.6, min: { w: 480, h: 360 }, max: { w: 800, h: 850 } },
     multiInstance: true,
     Component: Notepad,
   },
   photos: {
     title: 'Photos',
     icon: 'icon-photos',
-    defaultSize: { w: 640, h: 480 },
+    // A picture wants all the room it can get, so no max.
+    defaultSize: { w: 0.75, h: 0.85, min: { w: 640, h: 480 } },
     Component: Photos,
   },
   media: {
     title: 'Media Player',
     icon: 'icon-media',
-    defaultSize: { w: 560, h: 440 },
+    defaultSize: { w: 0.65, h: 0.8, min: { w: 560, h: 440 } },
     Component: MediaPlayer,
   },
 }

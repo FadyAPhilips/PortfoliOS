@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — run ESLint over the project (flat config in `eslint.config.js`)
 - `npm test` — run vitest once
 
-`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js` (including `openStartup`), `src/apps/projectFiles.js`, `src/apps/loadTextFile.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
+`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js` (including `openStartup`), `src/os/windowSize.js`, `src/apps/zoom.js`, `src/apps/projectFiles.js`, `src/apps/loadTextFile.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
 
 ## Architecture
 
@@ -32,6 +32,7 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 - **Desktop icons and Start menu items are `<button>`s, so 98.css's global button styling has to be explicitly unwound** — `box-shadow`, `min-width`/`min-height`, `padding`, and its `color: transparent` + `text-shadow` text-rendering trick. Miss any of them and the element renders as a raised grey button (or with dark text over a navy highlight).
 - **Gestures write to the DOM directly and dispatch only on `pointerup`.** Committing to state per `pointermove` re-renders at pointer frequency. Preserve this.
 - **Maximized and compact (<768px) windows derive their rect from the live desktop size at render time**, never from stored state, so they keep filling the viewport on resize while the floating rect survives for restore.
+- **`defaultSize` in the registry can be a share of the screen.** `w`/`h` of 1 or less are fractions of the desktop, bounded by optional pixel `min`/`max`; `src/os/windowSize.js` resolves it when the window opens (so `openApp` carries the live desktop size), then shrinks the window to end at the desktop edge from its cascade slot. Size is fixed at open — resizing the browser afterwards doesn't rescale open windows.
 - `src/os/constants.js` holds shared measurements (`MIN_W`, `TASKBAR_H`, z-index layers). CSS and gesture math both depend on these agreeing.
 
 ### Welcome program
@@ -78,6 +79,7 @@ PortfoliOS presents the portfolio as a Windows 98 desktop: each section is a "pr
 - **Names are made unique in `projectFiles`, not trusted from the JSON.** Explorer keys both its icons and its selection by filename, so two screenshots sharing a basename or two links sharing a label would collapse into one selectable icon; a repeat becomes `shot (2).jpg`, suffixed before the extension. Entries missing a path, or a `label` or `href`, are dropped rather than rendered as dead files.
 - `FileIcon` is a `<button>` and needs the same 98.css unwind as desktop icons (in `explorer.css`), but black-on-white with a navy selection rather than the desktop's white-on-teal.
 - **Photos keeps its index in the window payload**, not local state, so opening another picture from Explorer (which swaps the payload) jumps straight to it and the title updates in the same dispatch. Arrow keys are gated on `focusedId === windowId` so an unfocused viewer doesn't steal them.
+- **Notepad and Photos zoom through fixed steps** (`src/apps/zoom.js`, buttons in `ZoomControls.jsx`), and both reset when a different file opens. Notepad scales the font, so text rewraps and never scrolls sideways. Photos' 100% is *fit to window* (never enlarged past the image's own pixels); above it the frame scrolls, drag pans, and `+`/`-` zoom under the same focus gate as the arrows. The picture centres with `margin: auto`, not `align/justify-content: center`, which would put an overflowing image's top-left out of scroll reach; the fit is measured from the frame's `offsetWidth/Height` so a scrollbar appearing can't shrink the picture back.
 - **Media Player is keyed on `src`** so a new clip remounts with fresh transport state. `stop()` rewinds *before* the asynchronous `pause` event fires, so `onPause` reads `currentTime === 0` and reports Stopped rather than Paused.
 - The `MenuBar` strips (File Edit View Help) are decorative — `aria-hidden`, not focusable. There is nothing for those menus to do in a read-only portfolio.
 

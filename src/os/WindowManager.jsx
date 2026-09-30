@@ -20,9 +20,6 @@ export function WindowManagerProvider({ children }) {
   // Bound once — every consumer gets the same function identities.
   const api = useMemo(
     () => ({
-      // `opts` is { payload, title, key } — see actions.openApp.
-      openApp: (appId, opts) =>
-        dispatch(actions.openApp(appId, APPS[appId], opts)),
       update: (id, patch) => dispatch(actions.update(id, patch)),
       close: (id) => dispatch(actions.close(id)),
       focus: (id) => dispatch(actions.focus(id)),
@@ -33,10 +30,14 @@ export function WindowManagerProvider({ children }) {
     [],
   )
 
-  // Maximize needs the live desktop bounds, so it can't be memoized with [].
+  // Opening and maximizing need the live desktop bounds, so they can't be
+  // memoized with [].
   const actionsValue = useMemo(
     () => ({
       ...api,
+      // `opts` is { payload, title, key } — see actions.openApp.
+      openApp: (appId, opts) =>
+        dispatch(actions.openApp(appId, APPS[appId], opts, desktop)),
       toggleMaximize: (id) => dispatch(actions.toggleMaximize(id, desktop)),
     }),
     [api, desktop],

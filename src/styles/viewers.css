@@ -18,9 +18,9 @@
   white-space: pre-wrap;
 }
 
-/* --- Photos ---------------------------------------------------------- */
+/* --- Toolbar and zoom (Notepad, Photos) ----------------------------- */
 
-.photos-toolbar {
+.viewer-toolbar {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -28,10 +28,36 @@
   padding: 3px 2px;
 }
 
-.photos-toolbar button {
+.viewer-toolbar button {
   min-width: 0;
   min-height: 21px;
   padding: 0 8px;
+}
+
+.zoom-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.zoom-controls button {
+  width: 23px;
+  padding: 0;
+  font-weight: bold;
+}
+
+/* Fixed width so the buttons don't shift as the percentage changes. */
+.zoom-level {
+  min-width: 36px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Photos ---------------------------------------------------------- */
+
+/* The zoom sits next to Previous/Next, set off from them. */
+.photos .zoom-controls {
+  margin-left: 12px;
 }
 
 .photos-counter {
@@ -39,21 +65,39 @@
   padding-right: 4px;
 }
 
-/* Grey mat behind the picture, sunk into the window like a real frame. */
+/* Grey mat behind the picture, sunk into the window like a real frame. It
+   scrolls once the picture is zoomed past it. The picture centres with
+   margin: auto rather than align/justify-content, which would push an
+   overflowing picture's left and top edges out of scroll reach. */
 .photos-frame {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  overflow: auto;
   background: var(--button-shadow);
   box-shadow: inset -1px -1px var(--button-highlight),
     inset 1px 1px var(--window-frame);
 }
 
 .photos-img {
+  flex: 0 0 auto;
+  margin: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+/* Once measured the picture is sized in pixels, and zoomed it must be free
+   to outgrow the mat. */
+.photos-img[style] {
+  max-width: none;
+  max-height: none;
+}
+
+.photos-frame.is-zoomed {
+  cursor: grab;
+}
+
+.photos-frame.is-panning {
+  cursor: grabbing;
 }
 
 .photos-frame .viewer-empty {

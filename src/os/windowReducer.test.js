@@ -35,6 +35,24 @@ describe('OPEN_APP payload and title', () => {
   })
 })
 
+describe('OPEN_APP sizing', () => {
+  const desktop = { width: 1000, height: 700 }
+
+  it('resolves a share-of-the-screen size against the desktop', () => {
+    const viewer = { title: 'Viewer', defaultSize: { w: 0.5, h: 0.5 } }
+    const win = only(windowReducer(initialState, actions.openApp('v', viewer, {}, desktop)))
+    expect(win.w).toBe(500)
+    expect(win.h).toBe(350)
+  })
+
+  it('shrinks a new window so it stays on the desktop', () => {
+    const big = { title: 'Big', defaultSize: { w: 1, h: 1 } }
+    const win = only(windowReducer(initialState, actions.openApp('b', big, {}, desktop)))
+    expect(win.x + win.w).toBe(desktop.width)
+    expect(win.y + win.h).toBe(desktop.height)
+  })
+})
+
 describe('OPEN_APP single-instance apps', () => {
   it('replaces payload and title on the existing window and raises it', () => {
     let state = open(initialState, 'photos', photos, {
