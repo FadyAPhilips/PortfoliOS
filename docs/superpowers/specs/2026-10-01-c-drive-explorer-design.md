@@ -56,7 +56,10 @@ icon grid, status bar — generalised to browse the drive by path.
 single-instance registry entries**, both rendering Explorer, each with its
 own start path — thin wrappers `Projects.jsx` and `Homework.jsx`. Consequences:
 
-- Each icon has its own window; the two can be open at once.
+- Each icon has its own window; the two can be open at once. With My
+  Projects open, double-clicking Homework opens a **second** window rather
+  than navigating the first — and that holds even if the My Projects window
+  has been browsed into `C:\Homework` itself.
 - The desktop opens an app with no payload, which Explorer reads as "start
   path". Because single-instance reopen *swaps the payload in*, double-clicking
   an icon always brings its window back to its own folder, even after the
