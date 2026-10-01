@@ -54,6 +54,13 @@ describe('OPEN_APP sizing', () => {
 })
 
 describe('OPEN_APP single-instance apps', () => {
+  it('clears the payload when reopened with none, so a desktop icon resets its window', () => {
+    // Explorer reads a missing payload as "go to my start folder".
+    let state = open(initialState, 'photos', photos, { payload: { path: ['Homework'] } })
+    state = open(state, 'photos', photos)
+    expect(only(state).payload).toBeUndefined()
+  })
+
   it('replaces payload and title on the existing window and raises it', () => {
     let state = open(initialState, 'photos', photos, {
       payload: { name: 'a.jpg' },
