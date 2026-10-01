@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { projectFiles } from './projectFiles'
+import { educationFiles, educationReadme, projectFiles } from './projectFiles'
 
 const base = {
   slug: 'demo',
@@ -160,5 +160,91 @@ describe('projectFiles', () => {
       screenshots: ['/a/shot.jpg', '/b/shot.jpg'],
     })
     expect(files.slice(1).map((f) => f.src)).toEqual(['/a/shot.jpg', '/b/shot.jpg'])
+  })
+})
+
+describe('pdf docs', () => {
+  it('classifies a .pdf doc as pdf and anything else as text', () => {
+    const files = projectFiles({
+      ...base,
+      docs: ['/a/notes.txt', '/a/paper.pdf', '/a/SCAN.PDF', '/a/report.pdf?v=2'],
+    })
+    expect(files.slice(1).map((f) => [f.name, f.type])).toEqual([
+      ['notes.txt', 'text'],
+      ['paper.pdf', 'pdf'],
+      ['SCAN.PDF', 'pdf'],
+      ['report.pdf', 'pdf'],
+    ])
+  })
+})
+
+const entry = {
+  slug: 'bsc',
+  name: 'Bachelor_of_Science',
+  institution: 'University Name',
+  program: 'Program Name',
+  dates: '20XX – 20XX',
+  gpa: '',
+  status: 'Completed',
+  verifyUrl: '',
+  description: [],
+  docs: [],
+  screenshots: [],
+  videos: [],
+  links: [],
+}
+
+describe('educationReadme', () => {
+  it('lists only the populated details, one per line', () => {
+    expect(educationReadme(entry)).toBe(
+      'Institution: University Name\nProgram: Program Name\nDates: 20XX – 20XX\nStatus: Completed',
+    )
+  })
+
+  it('treats whitespace-only fields as empty', () => {
+    expect(educationReadme({ ...entry, gpa: '   ', dates: '' })).not.toMatch(/GPA|Dates/)
+  })
+
+  it('adds the verify link, then a blank line and the description', () => {
+    const text = educationReadme({
+      ...entry,
+      gpa: '3.9',
+      verifyUrl: 'https://verify.example/abc',
+      description: ['Line one.', 'Line two.'],
+    })
+    expect(text).toBe(
+      'Institution: University Name\nProgram: Program Name\nDates: 20XX – 20XX\nGPA: 3.9\nStatus: Completed\nVerify: https://verify.example/abc\n\nLine one.\nLine two.',
+    )
+  })
+
+  it('is just the description when no details are set, with no leading blank line', () => {
+    const bare = { name: 'x', description: ['Only this.'] }
+    expect(educationReadme(bare)).toBe('Only this.')
+  })
+})
+
+describe('educationFiles', () => {
+  it('leads with README.txt built from the details', () => {
+    const [readme] = educationFiles(entry)
+    expect(readme).toEqual({ name: 'README.txt', type: 'text', text: educationReadme(entry) })
+  })
+
+  it('attaches the details to pdf files only', () => {
+    const files = educationFiles({
+      ...entry,
+      verifyUrl: 'https://verify.example/abc',
+      docs: ['/e/diploma.pdf', '/e/notes.txt'],
+    })
+    const pdf = files.find((f) => f.type === 'pdf')
+    expect(pdf.details).toEqual({
+      fields: [
+        { label: 'Institution', value: 'University Name' },
+        { label: 'Program', value: 'Program Name' },
+        { label: 'Dates', value: '20XX – 20XX' },
+        { label: 'Status', value: 'Completed' },
+      ],
+      verifyUrl: 'https://verify.example/abc',
+    })
+    expect(files.find((f) => f.name === 'notes.txt').details).toBeUndefined()
   })
 })
