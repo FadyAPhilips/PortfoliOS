@@ -33,4 +33,17 @@ describe('checkPdf', () => {
     await expect(checkPdf('https://example.org/cert.pdf', fetchImpl)).resolves.toBeUndefined()
     expect(fetchImpl).not.toHaveBeenCalled()
   })
+
+  it('still checks a site path written without its leading slash', async () => {
+    // "assets/x.pdf" resolves against the site root, so it hits the same
+    // index.html fallback as any other mistyped local path.
+    const fetchImpl = respond({ type: 'text/html' })
+    await expect(checkPdf('assets/typo.pdf', fetchImpl)).rejects.toThrow(/app shell/)
+  })
+
+  it('skips protocol-relative external URLs too', async () => {
+    const fetchImpl = respond({})
+    await expect(checkPdf('//cdn.example.org/cert.pdf', fetchImpl)).resolves.toBeUndefined()
+    expect(fetchImpl).not.toHaveBeenCalled()
+  })
 })
