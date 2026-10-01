@@ -14,10 +14,16 @@ const folder = (name, children) => ({ type: 'folder', name, children })
 const entryFolders = (entries, filesOf) =>
   deduped(entries.filter((e) => e?.name).map((e) => folder(e.name, filesOf(e))))
 
-export function buildDrive({ projects = [], education = [] }) {
+// Degrees and certifications are both education entries, kept apart because
+// a multi-year degree and a short course aren't the same weight of thing.
+// Both subfolders always exist, empty or not.
+export function buildDrive({ projects = [], degrees = [], certifications = [] }) {
   return folder('(C:)', [
     folder(PROJECTS_PATH[0], entryFolders(projects, projectFiles)),
-    folder(HOMEWORK_PATH[0], entryFolders(education, educationFiles)),
+    folder(HOMEWORK_PATH[0], [
+      folder('Degrees', entryFolders(degrees, educationFiles)),
+      folder('Certifications', entryFolders(certifications, educationFiles)),
+    ]),
   ])
 }
 

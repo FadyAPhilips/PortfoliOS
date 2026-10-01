@@ -100,7 +100,7 @@ Each folder leads with a derived `README.txt`:
 
 - Project: from `description`, as today.
 - Homework entry: the populated details, one per line —
-  `Institution:`, `Program:`, `Dates:`, `GPA:`, `Status:`, `Verify:` —
+  `Institution:`, `Program:`, `Dates:`, `Average:`, `Status:`, `Verify:` —
   then a blank line and `description`, if any. Empty fields are omitted
   entirely, never printed as a bare label.
 
@@ -135,7 +135,7 @@ size. Payload `{ name, src, details? }`.
       "institution": "Institution Name",
       "program": "Program Name",
       "dates": "20XX – 20XX",
-      "gpa": "",
+      "average": "",
       "status": "Completed",
       "verifyUrl": "",
       "description": [],

@@ -184,7 +184,7 @@ const entry = {
   institution: 'University Name',
   program: 'Program Name',
   dates: '20XX – 20XX',
-  gpa: '',
+  average: '',
   status: 'Completed',
   verifyUrl: '',
   description: [],
@@ -202,18 +202,18 @@ describe('educationReadme', () => {
   })
 
   it('treats whitespace-only fields as empty', () => {
-    expect(educationReadme({ ...entry, gpa: '   ', dates: '' })).not.toMatch(/GPA|Dates/)
+    expect(educationReadme({ ...entry, average: '   ', dates: '' })).not.toMatch(/Average|Dates/)
   })
 
   it('adds the verify link, then a blank line and the description', () => {
     const text = educationReadme({
       ...entry,
-      gpa: '3.9',
+      average: '87%',
       verifyUrl: 'https://verify.example/abc',
       description: ['Line one.', 'Line two.'],
     })
     expect(text).toBe(
-      'Institution: University Name\nProgram: Program Name\nDates: 20XX – 20XX\nGPA: 3.9\nStatus: Completed\nVerify: https://verify.example/abc\n\nLine one.\nLine two.',
+      'Institution: University Name\nProgram: Program Name\nDates: 20XX – 20XX\nAverage: 87%\nStatus: Completed\nVerify: https://verify.example/abc\n\nLine one.\nLine two.',
     )
   })
 

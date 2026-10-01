@@ -151,6 +151,30 @@
       "docs": [],
       "videos": ["/assets/projects/lancerfit/lancer-fit-walkthrough.mp4"],
       "links": []
+    },
+    {
+      "slug": "portfolios",
+      "name": "PortfoliOS — Windows 98 Portfolio",
+      "description": [
+        "PortfoliOS",
+        "==========",
+        "",
+        "The portfolio you're looking at right now. Instead of a scrolling page, it's a working Windows 98 desktop: every section is a program that opens in its own window, which you can drag, resize from any edge or corner, minimize to the taskbar, and maximize. It started from my own concept and design direction — a portfolio that's fun to poke around in, where the presentation itself shows how I build.",
+        "",
+        "I designed the architecture around a single registry of programs that drives the desktop icons, the Start menu, and the window layer at once, so adding a program is a one-entry change. All window state lives in one reducer behind split contexts, and gestures write straight to the DOM and only commit on release, so dragging never re-renders at pointer speed. Every word of portfolio copy lives in JSON, separate from the components that render it — this very README is generated from a project entry.",
+        "",
+        "Each section is themed as a period program: an Explorer folder per project with Notepad, an image viewer and a media player for its files, a MySpace-style About page, a Device Manager skills inventory, an Outlook Express contact form that really sends mail, a setup wizard that installs my résumé into your Downloads, and a full Klondike Solitaire with the bouncing-cards win cascade.",
+        "",
+        "I built it with Claude Code using a structured skills workflow: brainstorm, a written design spec, an implementation plan, then test-driven development. I reviewed every design and change for architecture, performance, and accessibility before merging, and covered the core logic — window state, the file system, and the Solitaire rules engine — with unit tests.",
+        "",
+        "Built with: React 19, Vite, JavaScript, Vitest, CSS, Claude Code"
+      ],
+      "screenshots": [],
+      "docs": [],
+      "videos": [],
+      "links": [
+        { "label": "GitHub", "href": "https://github.com/FadyAPhilips/PortfoliOS" }
+      ]
     }
   ]
 }

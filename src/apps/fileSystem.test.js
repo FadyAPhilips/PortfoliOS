@@ -15,7 +15,8 @@ const drive = buildDrive({
     { slug: 'a', name: 'Alpha', description: ['Alpha'] },
     { slug: 'b', name: 'Alpha', description: ['Second Alpha'] },
   ],
-  education: [{ slug: 'bsc', name: 'Bachelor_of_Science', status: 'Completed' }],
+  degrees: [{ slug: 'bsc', name: 'Bachelor_of_Science', status: 'Completed' }],
+  certifications: [{ slug: 'cert', name: 'Cyber_Cert' }],
 })
 
 describe('buildDrive', () => {
@@ -26,8 +27,18 @@ describe('buildDrive', () => {
     ])
   })
 
+  it('splits Homework into Degrees and Certifications', () => {
+    expect(resolve(drive, HOMEWORK_PATH).children.map((c) => [c.type, c.name])).toEqual([
+      ['folder', 'Degrees'],
+      ['folder', 'Certifications'],
+    ])
+    expect(resolve(drive, [...HOMEWORK_PATH, 'Certifications']).children.map((c) => c.name)).toEqual([
+      'Cyber_Cert',
+    ])
+  })
+
   it('gives each entry a folder of its files', () => {
-    const bsc = resolve(drive, [...HOMEWORK_PATH, 'Bachelor_of_Science'])
+    const bsc = resolve(drive, [...HOMEWORK_PATH, 'Degrees', 'Bachelor_of_Science'])
     expect(bsc.children[0]).toMatchObject({ name: 'README.txt', text: 'Status: Completed' })
   })
 
@@ -41,7 +52,8 @@ describe('buildDrive', () => {
   it('skips entries with no name and tolerates missing lists', () => {
     const d = buildDrive({ projects: [{ slug: 'x' }] })
     expect(resolve(d, PROJECTS_PATH).children).toEqual([])
-    expect(resolve(d, HOMEWORK_PATH).children).toEqual([])
+    expect(resolve(d, [...HOMEWORK_PATH, 'Degrees']).children).toEqual([])
+    expect(resolve(d, [...HOMEWORK_PATH, 'Certifications']).children).toEqual([])
   })
 })
 

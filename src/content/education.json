@@ -1,17 +1,19 @@
 {
-  "_note": "One folder per entry under C:\\Homework. `name` is the folder name. Empty fields are hidden everywhere. README.txt is built from institution, program, dates, gpa, status and verifyUrl, then `description` (a list of lines). `docs` (.pdf opens in the PDF Viewer with these details across the top, anything else in Notepad), `screenshots`, `videos` and `links` work exactly as in projects.json. Files go in public/assets/education/<slug>/ — see the README there.",
+  "_note": "One folder per entry: `degrees` under C:\\Homework\\Degrees, `certifications` under C:\\Homework\\Certifications. Both lists take the same fields. `name` is the folder name. Empty fields are hidden everywhere. README.txt is built from institution, program, dates, average, status and verifyUrl, then `description` (a list of lines). `docs` (.pdf opens in the PDF Viewer with these details across the top, anything else in Notepad), `screenshots`, `videos` and `links` work exactly as in projects.json. Files go in public/assets/education/<slug>/ — see the README there.",
 
-  "education": [
+  "degrees": [
     {
       "slug": "bachelors",
       "name": "Bachelor_of_Science",
-      "institution": "University Name",
-      "program": "Bachelor of Science in Program Name",
-      "dates": "20XX – 20XX",
-      "gpa": "",
+      "institution": "Memorial University of Newfoundland",
+      "program": "Bachelor of Science in Computer Science",
+      "dates": "Sep 2018 – May 2022",
+      "average": "71.3",
       "status": "Completed",
       "verifyUrl": "",
-      "description": ["Placeholder: a line or two about this degree."],
+      "description": [
+        "Completed a four-year Bachelor of Science in Computer Science at Memorial University of Newfoundland, covering core CS fundamentals alongside a run of advanced electives: Intro to Game Programming, Visual Computing & Applications, Nature-Inspired Computing, Algorithm Design & Analysis, and Data Visualization. Game Programming fed directly into Space Wars, a C++/SFML game built with a four-person team."
+      ],
       "docs": [],
       "screenshots": [],
       "videos": [],
@@ -20,29 +22,38 @@
     {
       "slug": "masters",
       "name": "Masters_in_progress",
-      "institution": "University Name",
+      "institution": "University of Windsor",
       "program": "Master of Program Name",
-      "dates": "20XX – present",
-      "gpa": "",
+      "dates": "Sep 2025 – Dec 2026",
+      "average": "89.9",
       "status": "In Progress",
       "verifyUrl": "",
-      "description": ["Placeholder: a line or two about this degree."],
+      "description": [
+        "Pursuing a Master of Applied Computing at the University of Windsor, with coursework spanning Advanced Computing Concepts, Applied AI, Internet Applications, and Advanced Databases, alongside two major team projects: an autonomous Raspberry Pi smart car and the LancerFit fitness platform. The Applied AI course included an agent-based model simulating phantom traffic jams. The RC car project won Best Overall Graduate Demo at the Winter 2026 CS Demo Day, and a separate UI/UX hackathon entry placed 2nd at the Ottawa Infotainment Innovation Challenge."
+      ],
       "docs": [],
       "screenshots": [],
       "videos": [],
       "links": []
-    },
+    }
+  ],
+
+  "certifications": [
     {
       "slug": "cybersecurity-cert",
       "name": "Cybersecurity_Cert",
-      "institution": "Issuing Organization",
-      "program": "Certification Name",
-      "dates": "Issued 20XX",
-      "gpa": "",
+      "institution": "Sterling Information Technologies / EC-Council",
+      "program": "Sterling’s Cybersecurity Workshop in Ethical Hacker, Network Defense, & Digital Forensics",
+      "dates": "Issued Nov 2025",
+      "average": "",
       "status": "Completed",
       "verifyUrl": "",
-      "description": ["Placeholder: what this certification covers."],
-      "docs": [],
+      "description": [
+        "Completed Sterling Information Technologies' Cybersecurity Workshop — Ethical Hacker, Network Defense & Digital Forensics — delivered in partnership with the University of Windsor's School of Computer Science and EC-Council. The hands-on program used STORM, a mobile cybersecurity training platform, to cover ethical hacking, network defense, and digital forensics fundamentals."
+      ],
+      "docs": [
+        "/assets/education/cybersecurity-cert/sterling-cybersecurity-workshop-cert.pdf"
+      ],
       "screenshots": [],
       "videos": [],
       "links": []

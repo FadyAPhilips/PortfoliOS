@@ -9,7 +9,8 @@ import MenuBar from './MenuBar'
 
 const drive = buildDrive({
   projects: projectsData.projects,
-  education: educationData.education,
+  degrees: educationData.degrees,
+  certifications: educationData.certifications,
 })
 
 const ICON = {

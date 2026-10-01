@@ -59,7 +59,7 @@ const DETAILS = [
   ['institution', 'Institution'],
   ['program', 'Program'],
   ['dates', 'Dates'],
-  ['gpa', 'GPA'],
+  ['average', 'Average'],
   ['status', 'Status'],
 ]
 
