@@ -1,6 +1,7 @@
 import Welcome from './Welcome'
 import About from './About'
 import Projects from './Projects'
+import Homework from './Homework'
 import Experience from './Experience'
 import Skills from './Skills'
 import Contact from './Contact'
@@ -46,11 +47,18 @@ export const APPS = {
     Component: About,
   },
   projects: {
-    // The Explorer retitles itself to the open folder; this is the root.
+    // Explorer at C:\My Projects; it retitles itself as it navigates.
     title: 'My Projects',
     icon: 'icon-projects',
     defaultSize: { w: 0.5, h: 0.6, min: { w: 560, h: 400 }, max: { w: 900, h: 700 } },
     Component: Projects,
+  },
+  homework: {
+    // Explorer at C:\Homework. Its own entry, so it gets its own window.
+    title: 'Homework',
+    icon: 'icon-homework',
+    defaultSize: { w: 0.5, h: 0.6, min: { w: 560, h: 400 }, max: { w: 900, h: 700 } },
+    Component: Homework,
   },
   experience: {
     title: 'Experience',
@@ -99,7 +107,7 @@ export const APPS = {
     Component: SkillProperties,
   },
 
-  // Programs that files in My Projects open in. Not in APP_ORDER, so they
+  // Programs that files on the C: drive open in. Not in APP_ORDER, so they
   // have no desktop icon or Start entry and only ever launch from a file.
   notepad: {
     title: 'Notepad',
@@ -135,6 +143,7 @@ export const APP_ORDER = [
   'welcome',
   'about',
   'projects',
+  'homework',
   'experience',
   'skills',
   'contact',

@@ -1,0 +1,51 @@
+{
+  "_note": "One folder per entry under C:\\Homework. `name` is the folder name. Empty fields are hidden everywhere. README.txt is built from institution, program, dates, gpa, status and verifyUrl, then `description` (a list of lines). `docs` (.pdf opens in the PDF Viewer with these details across the top, anything else in Notepad), `screenshots`, `videos` and `links` work exactly as in projects.json. Files go in public/assets/education/<slug>/ — see the README there.",
+
+  "education": [
+    {
+      "slug": "bachelors",
+      "name": "Bachelor_of_Science",
+      "institution": "University Name",
+      "program": "Bachelor of Science in Program Name",
+      "dates": "20XX – 20XX",
+      "gpa": "",
+      "status": "Completed",
+      "verifyUrl": "",
+      "description": ["Placeholder: a line or two about this degree."],
+      "docs": [],
+      "screenshots": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "slug": "masters",
+      "name": "Masters_in_progress",
+      "institution": "University Name",
+      "program": "Master of Program Name",
+      "dates": "20XX – present",
+      "gpa": "",
+      "status": "In Progress",
+      "verifyUrl": "",
+      "description": ["Placeholder: a line or two about this degree."],
+      "docs": [],
+      "screenshots": [],
+      "videos": [],
+      "links": []
+    },
+    {
+      "slug": "cybersecurity-cert",
+      "name": "Cybersecurity_Cert",
+      "institution": "Issuing Organization",
+      "program": "Certification Name",
+      "dates": "Issued 20XX",
+      "gpa": "",
+      "status": "Completed",
+      "verifyUrl": "",
+      "description": ["Placeholder: what this certification covers."],
+      "docs": [],
+      "screenshots": [],
+      "videos": [],
+      "links": []
+    }
+  ]
+}
