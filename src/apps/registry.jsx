@@ -10,6 +10,7 @@ import SkillProperties from './SkillProperties'
 import Notepad from './Notepad'
 import Photos from './Photos'
 import MediaPlayer from './MediaPlayer'
+import PdfViewer from './PdfViewer'
 
 /**
  * Single source of truth for every "program". Desktop icons, the Start menu,
@@ -119,6 +120,13 @@ export const APPS = {
     icon: 'icon-media',
     defaultSize: { w: 0.65, h: 0.8, min: { w: 560, h: 440 } },
     Component: MediaPlayer,
+  },
+  pdfviewer: {
+    title: 'PDF Viewer',
+    icon: 'icon-file-pdf',
+    // A page is taller than it is wide; give it the height.
+    defaultSize: { w: 0.6, h: 0.9, min: { w: 480, h: 400 } },
+    Component: PdfViewer,
   },
 }
 
