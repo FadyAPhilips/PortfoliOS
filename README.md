@@ -1,6 +1,6 @@
 # PortfoliOS
 
-fadyphilips.com
+[Find it Here](fadyphilips.com)
 
 The portfolio you're looking at right now. Instead of a scrolling page, it's a working Windows 98 desktop: every section is a program that opens in its own window, which you can drag, resize from any edge or corner, minimize to the taskbar, and maximize. It started from my own concept and design direction — a portfolio that's fun to poke around in, where the presentation itself shows how I build.
 
