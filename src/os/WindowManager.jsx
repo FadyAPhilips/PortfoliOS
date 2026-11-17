@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo, useReducer } from 'react'
 import { actions, initialState, openStartup, windowReducer } from './windowReducer'
 import { useDesktopSize } from './useDesktopSize'
 import { APPS, STARTUP_APPS } from '../apps/registry'
+import { useSettings } from './settingsContext'
 
 // Split so components that only ever dispatch (icons, menu items) don't
 // re-render when window state changes. `dispatch` is referentially stable.
@@ -11,10 +12,18 @@ const DesktopSizeContext = createContext(null)
 
 export function WindowManagerProvider({ children }) {
   // Read first: the lazy initializer below centres the startup programs on it.
-  const desktop = useDesktopSize()
-  // The desktop boots with its startup programs already open.
+  const { settings, chrome } = useSettings()
+  const desktop = useDesktopSize(chrome.taskbarH)
+  // The desktop boots with its startup programs already open — minus
+  // Welcome when the visitor has turned it off in Display Properties.
   const [state, dispatch] = useReducer(windowReducer, initialState, (s) =>
-    openStartup(s, STARTUP_APPS.map((appId) => [appId, APPS[appId]]), desktop),
+    openStartup(
+      s,
+      STARTUP_APPS.filter((appId) => appId !== 'welcome' || settings.showWelcome).map(
+        (appId) => [appId, APPS[appId]],
+      ),
+      desktop,
+    ),
   )
 
   // Bound once — every consumer gets the same function identities.
