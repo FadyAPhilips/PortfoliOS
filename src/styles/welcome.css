@@ -32,6 +32,27 @@
   font-size: 16px;
 }
 
+/* Desktop-browser notice: a Win98 info strip between banner and contents. */
+.welcome-notice {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 3px 0 0;
+  padding: 4px 6px;
+  background: var(--info-background);
+  border: 1px solid var(--window-frame);
+  font-size: var(--fs-ui);
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.welcome-notice-icon {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+
 .welcome-main {
   flex: 1 1 auto;
   min-height: 0;

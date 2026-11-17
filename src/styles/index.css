@@ -42,6 +42,7 @@
   --titlebar-h: 22px;
   --resize-edge: 5px;
   --selection-blue: #000080;
+  --info-background: #ffffe1; /* Win98 tooltip / info-bar yellow */
 
   /*
     Display settings tokens, at their Default values. src/os/settings.js is
