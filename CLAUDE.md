@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — run ESLint over the project (flat config in `eslint.config.js`)
 - `npm test` — run vitest once
 
-`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js` (including `openStartup`), `src/os/windowSize.js`, `src/apps/zoom.js`, `src/apps/projectFiles.js`, `src/apps/fileSystem.js`, `src/apps/openFile.js`, `src/apps/loadTextFile.js`, `src/apps/loadPdf.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
+`vitest` is deliberately scoped to the pure modules — `src/os/windowReducer.js` (including `openStartup`), `src/os/windowSize.js`, `src/os/settings.js`, `src/apps/zoom.js`, `src/apps/projectFiles.js`, `src/apps/fileSystem.js`, `src/apps/openFile.js`, `src/apps/loadTextFile.js`, `src/apps/loadPdf.js`, `src/apps/experienceData.js`, `src/apps/avatarFaces.js`, and Solitaire's `engine.js` and `layout.js`. There is no DOM test environment; components are verified with lint, build, and a click-through in the dev server.
 
 ## Architecture
 
