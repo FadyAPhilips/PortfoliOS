@@ -1,5 +1,7 @@
 {
-  "_note": "Copy for the Welcome screen that opens on startup. {owner} and {brand} are filled in from site.json. Each topic is one entry in the Contents list: `icon` must be a symbol id in public/icons.svg, `body` is a list of paragraphs, and `open` (optional) is an app id from registry.jsx that gets an Open button. The first topic is shown when the window opens.",
+  "_note": "Copy for the Welcome screen that opens on startup. {owner} and {brand} are filled in from site.json. Each topic is one entry in the Contents list: `icon` must be a symbol id in public/icons.svg, `body` is a list of paragraphs, and `open` (optional) is an app id from registry.jsx that gets an Open button. The first topic is shown when the window opens. `notice` is a one-line strip shown under the banner on every topic; leave it empty to hide it.",
+
+  "notice": "{brand} is made for a desktop browser. It works on a phone, but to get the full experience, visit on a computer. Text too small? Open Display Properties from the Start menu.",
 
   "topics": [
     {
@@ -42,7 +44,8 @@
         "Skills: a Device Manager style list. Click a skill to open its properties.",
         "Contact Me: write a message and click Send. It really is delivered.",
         "resume.exe: run the setup wizard to download the resume.",
-        "Solitaire: the classic card game, for a break."
+        "Solitaire: the classic card game, for a break.",
+        "Display Properties: make the text bigger, switch to a smoother font, change the desktop colour, or turn off animations."
       ]
     }
   ]

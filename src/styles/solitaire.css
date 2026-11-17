@@ -153,5 +153,5 @@
   min-width: 0;
   min-height: 18px;
   padding: 0 8px;
-  font-size: 11px;
+  font-size: var(--fs-ui);
 }

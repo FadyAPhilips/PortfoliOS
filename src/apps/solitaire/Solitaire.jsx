@@ -11,6 +11,7 @@ import OptionsDialog from './OptionsDialog'
 import DeckDialog from './DeckDialog'
 import AboutDialog from './AboutDialog'
 import WinAnimation from './WinAnimation'
+import { useSettings } from '../../os/settingsContext'
 
 const SLOTS = [
   { pile: 'stock' },
@@ -42,6 +43,7 @@ export default function Solitaire({ windowId }) {
   const [ui, setUi] = useState({ statusBar: true, design: 0 })
   const [dialog, setDialog] = useState(null) // 'options' | 'deck' | 'about' | 'dealAgain'
   const [cascade, setCascade] = useState(null) // launches for WinAnimation
+  const { reduceMotion } = useSettings().settings
   const feltRef = useRef(null)
   const tableRef = useRef(null)
   const [scale, setScale] = useState(1)
@@ -91,6 +93,14 @@ export default function Solitaire({ windowId }) {
   useEffect(() => {
     if (!game.won || !tableRef.current) return
     let cancelled = false
+    // Reduce motion: no bouncing cards, straight to the prompt — through the
+    // same promise path as a sheet that fails to load.
+    if (reduceMotion) {
+      Promise.resolve().then(() => !cancelled && setDialog('dealAgain'))
+      return () => {
+        cancelled = true
+      }
+    }
     const origin = tableRef.current.getBoundingClientRect()
     loadSheet()
       .then((sheet) => {
@@ -122,7 +132,7 @@ export default function Solitaire({ windowId }) {
     return () => {
       cancelled = true
     }
-  }, [game.won, game.foundations, scale])
+  }, [game.won, game.foundations, scale, reduceMotion])
 
   const drag = useCardDrag({
     tableRef,

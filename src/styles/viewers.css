@@ -13,7 +13,7 @@
   width: 100%;
   resize: none;
   font-family: Fixedsys, 'Lucida Console', 'Courier New', monospace;
-  font-size: 12px;
+  font-size: var(--fs-mono);
   line-height: 1.3;
   white-space: pre-wrap;
 }

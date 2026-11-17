@@ -1,17 +1,17 @@
 import { useCallback, useRef } from 'react'
-import { KEEP_VISIBLE, MIN_H, MIN_W, TITLEBAR_H } from './constants'
+import { KEEP_VISIBLE, MIN_H, MIN_W } from './constants'
 
 const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi)
 
 // Keep enough of the window on the desktop that it can always be grabbed again.
-function applyMove(start, dx, dy, desktop) {
+function applyMove(start, dx, dy, desktop, titlebarH) {
   return {
     x: clamp(
       start.x + dx,
       KEEP_VISIBLE - start.w,
       desktop.width - KEEP_VISIBLE,
     ),
-    y: clamp(start.y + dy, 0, desktop.height - TITLEBAR_H),
+    y: clamp(start.y + dy, 0, desktop.height - titlebarH),
     w: start.w,
     h: start.h,
   }
@@ -46,13 +46,13 @@ function applyResize(start, dir, dx, dy) {
  * release — committing to React state per pointermove would re-render the
  * window tree at pointer frequency.
  */
-export function useWindowGestures({ nodeRef, rect, desktop, disabled, onCommit }) {
+export function useWindowGestures({ nodeRef, rect, desktop, titlebarH, disabled, onCommit }) {
   const gesture = useRef(null)
 
   // Read through refs so the pointer handlers never need to be re-created
   // mid-gesture when the rect or desktop size changes.
-  const latest = useRef({ rect, desktop })
-  latest.current = { rect, desktop }
+  const latest = useRef({ rect, desktop, titlebarH })
+  latest.current = { rect, desktop, titlebarH }
 
   const begin = useCallback(
     (e, mode) => {
@@ -78,7 +78,7 @@ export function useWindowGestures({ nodeRef, rect, desktop, disabled, onCommit }
     const dy = e.clientY - g.startY
     g.next =
       g.mode === 'move'
-        ? applyMove(g.start, dx, dy, latest.current.desktop)
+        ? applyMove(g.start, dx, dy, latest.current.desktop, latest.current.titlebarH)
         : applyResize(g.start, g.mode, dx, dy)
 
     const s = nodeRef.current.style

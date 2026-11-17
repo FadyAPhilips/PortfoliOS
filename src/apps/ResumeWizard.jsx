@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useWindowActions } from '../os/WindowManager'
+import { useSettings } from '../os/settingsContext'
 import site from '../content/site.json'
 import { resumeName, resumePath } from './resumeFile'
 
@@ -32,6 +33,7 @@ export default function ResumeWizard({ windowId }) {
   const { close } = useWindowActions()
   const [step, setStep] = useState(WELCOME)
   const [progress, setProgress] = useState(0)
+  const { reduceMotion } = useSettings().settings
   const configured = Boolean(resumePath)
 
   // The copy step fills its bar over ~1.5s, then moves itself along. The bar
@@ -42,7 +44,8 @@ export default function ResumeWizard({ windowId }) {
     let done
     let p = 0
     const tick = setInterval(() => {
-      p = Math.min(100, p + 4)
+      // Reduce motion: the bar fills on the first tick instead of creeping.
+      p = reduceMotion ? 100 : Math.min(100, p + 4)
       setProgress(p)
       if (p === 100) {
         clearInterval(tick)
@@ -55,7 +58,7 @@ export default function ResumeWizard({ windowId }) {
       clearInterval(tick)
       clearTimeout(done)
     }
-  }, [step])
+  }, [step, reduceMotion])
 
   const copying = FILES[Math.min(FILES.length - 1, Math.floor(progress / (100 / FILES.length)))]
 

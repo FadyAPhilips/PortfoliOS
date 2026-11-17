@@ -1,3 +1,4 @@
+@import './controls.css';
 @import './desktop.css';
 @import './window.css';
 @import './taskbar.css';
@@ -11,6 +12,7 @@
 @import './solitaire.css';
 @import './wizard.css';
 @import './welcome.css';
+@import './settings.css';
 
 /*
   Win98 palette.
@@ -40,6 +42,28 @@
   --titlebar-h: 22px;
   --resize-edge: 5px;
   --selection-blue: #000080;
+  --info-background: #ffffe1; /* Win98 tooltip / info-bar yellow */
+
+  /*
+    Display settings tokens, at their Default values. src/os/settings.js is
+    the source of truth: SettingsProvider overwrites these inline on <html>
+    from its preset table (and the title bar / taskbar heights above). Font
+    sizes are named by role, not by number. Display text — the wallpaper
+    name and the Welcome banner — deliberately has no token: it never scales.
+  */
+  --fs-ui: 11px;
+  --fs-heading: 13px;
+  --fs-start-banner: 15px;
+  --fs-mono: 12px;
+  --fs-web: 11px;
+  --fs-web-name: 14px;
+  --fs-web-banner: 12px;
+  --fs-web-caption: 10px;
+  --label-w: 75px;
+  --font-ui: 'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif;
+  /* 98.css's controls use their own fallback stack; see settings.js. */
+  --font-control: 'Pixelated MS Sans Serif', Arial;
+  --font-smoothing: none;
 }
 
 * {
@@ -55,9 +79,9 @@ body,
 }
 
 body {
-  font-family: 'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif;
-  font-size: 11px;
-  -webkit-font-smoothing: none;
+  font-family: var(--font-ui);
+  font-size: var(--fs-ui);
+  -webkit-font-smoothing: var(--font-smoothing);
   font-smooth: never;
   background: var(--desktop-teal);
   /* The desktop metaphor breaks if the page itself can be text-selected
@@ -75,3 +99,4 @@ button {
   font-family: inherit;
   font-size: inherit;
 }
+

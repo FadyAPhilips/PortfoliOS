@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useWindowActions } from '../os/WindowManager'
 import { APPS } from './registry'
 import site from '../content/site.json'
-import { topics } from '../content/welcome.json'
+import { notice, topics } from '../content/welcome.json'
 
 // welcome.json writes the owner and brand as tokens so they live in one place.
 const fill = (text) =>
@@ -27,6 +27,17 @@ export default function Welcome({ windowId }) {
           to <strong>{site.brand}</strong>
         </span>
       </div>
+
+      {typeof notice === 'string' && notice.trim() && (
+        <p className="welcome-notice" role="note">
+          <svg className="welcome-notice-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" fill="var(--dialog-blue)" />
+            <rect x="7" y="7" width="2" height="5" fill="var(--button-highlight)" />
+            <rect x="7" y="4" width="2" height="2" fill="var(--button-highlight)" />
+          </svg>
+          <span>{fill(notice)}</span>
+        </p>
+      )}
 
       <div className="welcome-main">
         <nav className="welcome-contents" aria-label="Contents">

@@ -1,0 +1,41 @@
+/*
+  98.css's control rule, re-declared through the settings tokens. dist/98.css
+  hardcodes 11px and the pixel font on exactly this selector list; without
+  this override every button, title bar, tab and tree would ignore the text
+  size and font style settings.
+
+  Imported FIRST in index.css so it sits where 98.css's own rule sat in the
+  cascade: every later rule of equal specificity (index.css's
+  `button { font-size: inherit }`, for one) still wins over it, as before.
+*/
+.title-bar,
+.window,
+button,
+input,
+label,
+legend,
+li[role='tab'],
+option,
+select,
+table,
+textarea,
+ul.tree-view {
+  font-family: var(--font-control);
+  font-size: var(--fs-ui);
+  -webkit-font-smoothing: var(--font-smoothing);
+}
+
+/*
+  98.css fixes single-line fields and selects at height: 21px, which clips
+  any text bigger than the Default 11px. Grow with the font instead: 11px +
+  10px is exactly 21px at Default, so nothing moves there.
+*/
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+select {
+  height: calc(var(--fs-ui) + 10px);
+}

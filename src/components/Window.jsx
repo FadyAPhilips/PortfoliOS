@@ -1,12 +1,14 @@
 import { useCallback, useRef } from 'react'
 import { useDesktop, useWindowActions } from '../os/WindowManager'
 import { useWindowGestures } from '../os/useWindowGestures'
+import { useSettings } from '../os/settingsContext'
 import { APPS } from '../apps/registry'
 import ResizeHandles from './ResizeHandles'
 
 export default function Window({ win, focused }) {
   const nodeRef = useRef(null)
   const desktop = useDesktop()
+  const { titlebarH } = useSettings().chrome
   const { close, focus, minimize, toggleMaximize, setRect } = useWindowActions()
   const app = APPS[win.appId]
   const Body = app.Component
@@ -30,6 +32,7 @@ export default function Window({ win, focused }) {
     nodeRef,
     rect,
     desktop,
+    titlebarH,
     disabled: locked,
     onCommit,
   })

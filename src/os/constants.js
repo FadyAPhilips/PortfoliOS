@@ -3,7 +3,9 @@
 export const MIN_W = 240
 export const MIN_H = 140
 
-// Chrome measurements, kept here so CSS and gesture math can't drift apart.
+// Chrome heights at the Default text size, for reference only. The live
+// values change with Display Properties: read useSettings().chrome, whose
+// numbers come from the same table (src/os/settings.js) as the CSS.
 export const TITLEBAR_H = 22
 export const TASKBAR_H = 28
 export const RESIZE_EDGE = 5
