@@ -12,6 +12,7 @@ import Notepad from './Notepad'
 import Photos from './Photos'
 import MediaPlayer from './MediaPlayer'
 import PdfViewer from './PdfViewer'
+import Settings from './Settings'
 
 /**
  * Single source of truth for every "program". Desktop icons, the Start menu,
@@ -97,6 +98,15 @@ export const APPS = {
     defaultSize: { w: 616, h: 520 },
     Component: Solitaire,
   },
+  settings: {
+    // Win98's Display Properties: text size, font, desktop colour, effects.
+    title: 'Display Properties',
+    icon: 'icon-settings',
+    // Preview, two fields and the button row at Default; the panel scrolls
+    // at the larger presets rather than growing the window.
+    defaultSize: { w: 400, h: 440 },
+    Component: Settings,
+  },
 
   // Opened from the Skills tree, never from the desktop. Single-instance:
   // picking another skill swaps this window's payload and title.
@@ -149,6 +159,7 @@ export const APP_ORDER = [
   'contact',
   'resume',
   'solitaire',
+  'settings',
 ]
 
 // Opened when the page loads, in this order; the last one ends up focused.

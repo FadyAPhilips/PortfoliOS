@@ -1,0 +1,51 @@
+{
+  "_note": "Labels for Display Properties (src/apps/Settings.jsx). Option labels are keyed by the ids in src/os/settings.js, which holds the actual values; an id missing here just shows the id. {brand} is filled from site.json.",
+
+  "tabs": {
+    "appearance": "Appearance",
+    "background": "Background",
+    "effects": "Effects"
+  },
+
+  "appearance": {
+    "textSize": "Font size:",
+    "fontStyle": "Font:",
+    "restore": "Restore Defaults",
+    "preview": {
+      "title": "Active Window",
+      "text": "Window Text",
+      "button": "OK"
+    }
+  },
+
+  "background": {
+    "label": "Desktop colour:"
+  },
+
+  "effects": {
+    "showWelcome": "Show Welcome when {brand} starts",
+    "reduceMotion": "Reduce motion"
+  },
+
+  "buttons": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "apply": "Apply"
+  },
+
+  "options": {
+    "small": "Small",
+    "default": "Default",
+    "large": "Large",
+    "xlarge": "Extra Large",
+    "classic": "Classic (pixel)",
+    "smooth": "Smooth",
+    "teal": "Teal",
+    "black": "Black",
+    "navy": "Navy",
+    "darkgreen": "Dark Green",
+    "maroon": "Maroon",
+    "purple": "Purple",
+    "slate": "Slate"
+  }
+}
