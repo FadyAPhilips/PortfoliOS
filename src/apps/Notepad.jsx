@@ -3,10 +3,10 @@ import MenuBar from './MenuBar'
 import { loadTextFile } from './loadTextFile'
 import ZoomControls from './ZoomControls'
 
-// 100% is Notepad's 12px text; the text rewraps at every level, so zooming
-// never needs a sideways scroll.
+// 100% is Notepad's --fs-mono text (12px at the Default text size, scaled by
+// the Display Properties preset); zoom multiplies on top. The text rewraps at
+// every level, so zooming never needs a sideways scroll.
 const ZOOM_STEPS = [0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3]
-const BASE_FONT_PX = 12
 
 /**
  * Read-only Notepad. The payload is either { name, text } for text the JSON
@@ -63,7 +63,7 @@ export default function Notepad({ payload }) {
           readOnly
           spellCheck={false}
           aria-label={name}
-          style={{ fontSize: BASE_FONT_PX * level }}
+          style={{ fontSize: `calc(var(--fs-mono) * ${level})` }}
         />
       )}
     </div>

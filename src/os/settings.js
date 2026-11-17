@@ -25,11 +25,16 @@ export const FONT_STYLES = [
   {
     id: 'classic',
     family: "'Pixelated MS Sans Serif', Tahoma, 'Segoe UI', sans-serif",
+    // 98.css's own stack for its controls. Kept separate because the
+    // fallback font sets line-height: normal, and swapping Arial for Tahoma
+    // moves every control down a pixel.
+    controlFamily: "'Pixelated MS Sans Serif', Arial",
     smoothing: 'none',
   },
   {
     id: 'smooth',
     family: "Tahoma, 'Segoe UI', Verdana, sans-serif",
+    controlFamily: "Tahoma, 'Segoe UI', Verdana, sans-serif",
     smoothing: 'auto',
   },
 ]
@@ -136,6 +141,7 @@ export function cssVars(settings) {
   vars['--taskbar-h'] = px(size.taskbarH)
   vars['--label-w'] = px(BASE_LABEL_W * size.scale)
   vars['--font-ui'] = font.family
+  vars['--font-control'] = font.controlFamily
   vars['--font-smoothing'] = font.smoothing
   vars['--desktop-teal'] = find(DESKTOP_COLORS, settings.desktopColor).hex
   return vars

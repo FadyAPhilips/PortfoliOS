@@ -35,7 +35,7 @@
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   color: #fff;
-  font-size: 15px;
+  font-size: var(--fs-start-banner);
   letter-spacing: 1px;
   white-space: nowrap;
 }

@@ -29,6 +29,9 @@ describe('cssVars', () => {
     expect(v['--desktop-teal']).toBe('#008080')
     expect(v['--font-smoothing']).toBe('none')
     expect(v['--font-ui']).toMatch(/^'Pixelated MS Sans Serif'/)
+    // 98.css's own control stack — its Arial fallback sets line-height, so
+    // anything else shifts every control by a pixel.
+    expect(v['--font-control']).toBe("'Pixelated MS Sans Serif', Arial")
   })
 
   it('every preset emits every token as whole px', () => {
@@ -49,6 +52,7 @@ describe('cssVars', () => {
   it('smooth font switches family and smoothing', () => {
     const v = cssVars(resolve({ fontStyle: 'smooth' }, env))
     expect(v['--font-ui']).toMatch(/^Tahoma/)
+    expect(v['--font-control']).toMatch(/^Tahoma/)
     expect(v['--font-smoothing']).toBe('auto')
   })
 })

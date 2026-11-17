@@ -20,7 +20,7 @@
 
 .app-title {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--fs-heading);
 }
 
 .app-sub {

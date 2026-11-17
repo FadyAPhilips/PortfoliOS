@@ -10,6 +10,9 @@
   gap: 3px;
   height: var(--taskbar-h);
   padding: 2px;
+  /* What's left inside the top border and padding: the height of the Start
+     button, task buttons and tray. 22px at the Default 28px taskbar. */
+  --taskbar-inner-h: calc(var(--taskbar-h) - 6px);
 
   background: var(--surface);
   /* Single raised edge along the top, as on the real taskbar. */
@@ -23,7 +26,7 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  height: 22px;
+  height: var(--taskbar-inner-h);
   padding: 0 5px 0 3px;
   flex: 0 0 auto;
 }
@@ -66,7 +69,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  height: 22px;
+  height: var(--taskbar-inner-h);
   padding: 0 6px;
 
   /* Buttons share the available width and shrink together as more open. */
@@ -112,7 +115,7 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  height: 22px;
+  height: var(--taskbar-inner-h);
   padding: 0 6px;
   box-shadow: inset -1px -1px var(--button-highlight),
     inset 1px 1px var(--button-shadow);
