@@ -24,3 +24,18 @@ ul.tree-view {
   font-size: var(--fs-ui);
   -webkit-font-smoothing: var(--font-smoothing);
 }
+
+/*
+  98.css fixes single-line fields and selects at height: 21px, which clips
+  any text bigger than the Default 11px. Grow with the font instead: 11px +
+  10px is exactly 21px at Default, so nothing moves there.
+*/
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+select {
+  height: calc(var(--fs-ui) + 10px);
+}
